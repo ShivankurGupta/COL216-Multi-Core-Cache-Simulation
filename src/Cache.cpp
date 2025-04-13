@@ -1,4 +1,5 @@
 #include "Cache.hpp"
+#include "Bus.hpp"
 #include <cmath>
 
 Cache::Cache(int s, int E, int b, int coreId, Bus *bus)
@@ -98,9 +99,4 @@ void Cache::snoop(uint32_t address, char op, int cycle)
     }
 
     set.updateLRU(lineIndex, cycle);
-}
-
-int Cache::getBlockBits() const
-{
-    return b;
 }

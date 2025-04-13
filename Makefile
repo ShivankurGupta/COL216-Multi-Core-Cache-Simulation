@@ -1,14 +1,34 @@
+# Compiler and flags
 CXX = g++
-CXXFLAGS = -std=c++17 -Wall -Iinclude
+CXXFLAGS = -std=c++17 -Wall -Wextra -I./src
 
-SRC = $(wildcard src/*.cpp)
-OBJ = $(SRC:.cpp=.o)
-EXEC = L1simulate
+# Directories
+SRC_DIR = src
+BUILD_DIR = build
+BIN = cache_sim
 
-all: $(EXEC)
+# Source and object files
+SRCS = $(wildcard $(SRC_DIR)/*.cpp)
+OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(BUILD_DIR)/%.o)
 
-$(EXEC): $(OBJ)
+# Default rule
+all: $(BIN)
+
+# Link object files into binary
+$(BIN): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
+# Compile .cpp to .o
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@mkdir -p $(BUILD_DIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Clean build artifacts
 clean:
-	rm -f src/*.o $(EXEC)
+	rm -rf $(BUILD_DIR) $(BIN)
+
+# Run the simulation (add args as needed)
+run: $(BIN)
+	./$(BIN)
+
+.PHONY: all clean run
