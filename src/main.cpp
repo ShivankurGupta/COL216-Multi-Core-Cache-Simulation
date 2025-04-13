@@ -34,7 +34,20 @@ int main(int argc, char* argv[]) {
 
     for (int i = 0; i < 4; ++i) {
         std::string traceFile = tracePrefix + "_proc" + std::to_string(i) + ".trace";
-        cores[i]->processTrace(traceFile);
+        cores[i]->recordTrace(traceFile);
+    }
+
+    bool finished = false;
+    int currentCycle = 0;
+    while (!finished) {
+        finished = true;
+        for (auto& core : cores) {
+            if (!core->infile.eof()) {
+                finished = false;
+                core->processTrace(currentCycle);
+            }
+        }
+        currentCycle++;
     }
 
     // Output stats

@@ -21,5 +21,5 @@ public:
 
     Core(int id, Cache* cache);
     void recordTrace(const std::string& filename);
-    void processTrace(const std::string& filename);
+    void processTrace(int currentCycle);
 };
