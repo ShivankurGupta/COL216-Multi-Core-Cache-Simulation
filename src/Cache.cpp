@@ -72,7 +72,7 @@ bool Cache::access(uint32_t address, char op, int cycle, int &penaltyCycles)
     }
     else
     {
-        bool shared = bus->broadcast(address, 'W', coreId); // Ensure shared status is returned
+        bus->broadcast(address, 'W', coreId); // Ensure shared status is returned
         set.lines[victimIndex] = {tag, MODIFIED, cycle};
         penaltyCycles += 100;
     }
