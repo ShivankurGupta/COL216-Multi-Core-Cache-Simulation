@@ -31,11 +31,12 @@ bool Bus::broadcast(uint32_t address, char op, int sourceId)
     // update the whole below of the logic correctly...when there is traffic when there is not or invalidations
     if (op == 'W' || op == 'U')
     {
+        //  it always reads from memory as per the protocol for now. 
+        // So no traffic here
         if (cache_sharing) {
             ++invalidations;
         }
     }
-
     if (op == 'R' || op == 'W')
     {
         int blockSizeBytes = 1 << caches[0]->getBlockBits();

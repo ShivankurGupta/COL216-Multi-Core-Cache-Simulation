@@ -92,6 +92,8 @@ bool Cache::snoop(uint32_t address, char op, int &penaltyCycles)
         return false;
 
     MESIState &state = set.lines[lineIndex].state;
+    
+    // if there is sharing then always return true.
 
     if (op == 'R')
     {
@@ -105,7 +107,6 @@ bool Cache::snoop(uint32_t address, char op, int &penaltyCycles)
             // set.lines[lineIndex].dirty = false;
         }
         state = SHARED;
-        return true ;
     }
     else if (op == 'W' || op == 'U')
     {
@@ -121,6 +122,6 @@ bool Cache::snoop(uint32_t address, char op, int &penaltyCycles)
         // W when the access cache had write miss, U when it was in shared
         state = INVALID;
     }
-    return false ;
+    return true ;
     // set.updateLRU(lineIndex, cycle);
 }
