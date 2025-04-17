@@ -17,6 +17,6 @@ private:
 public:
     Cache(int s, int E, int b, int coreId, Bus *bus);
     bool access(uint32_t address, char op, int cycle, int &penaltyCycles);
-    void snoop(uint32_t address, char op, int cycle);
+    bool snoop(uint32_t address, char op, int &penaltyCycles);
     int getBlockBits() const { return b; }
 };

@@ -22,33 +22,41 @@ bool Cache::access(uint32_t address, char op, int cycle, int &penaltyCycles)
     CacheSet &set = sets[setIndex];
     int lineIndex = set.findLine(tag);
 
+    // Update LRU for the accessed line (independent of hit/miss)
+    set.updateLRU(lineIndex, cycle);
     // Cache hit
     if (lineIndex != -1 && set.lines[lineIndex].state != INVALID)
     {
-        set.updateLRU(lineIndex, cycle);
         if (op == 'W')
         {
-            set.lines[lineIndex].dirty = true;
+            // set.lines[lineIndex].dirty = true;
             if (set.lines[lineIndex].state == SHARED)
             {
                 // Upgrade to MODIFIED (BusUpgr)
                 bus->broadcast(address, 'U', coreId);
-                set.lines[lineIndex].state = MODIFIED;
-                penaltyCycles += 2;
+                // set.lines[lineIndex].state = MODIFIED;
+                // penaltyCycles += 2;
             }
-            else if (set.lines[lineIndex].state == EXCLUSIVE)
-            {
-                set.lines[lineIndex].state = MODIFIED;
-            }
+            // else if (set.lines[lineIndex].state == EXCLUSIVE)
+            // {
+            //     set.lines[lineIndex].state = MODIFIED;
+            // }
+            set.lines[lineIndex].state = MODIFIED;
         }
         return true;
     }
 
     // Cache miss
-    penaltyCycles += 100; // Memory fetch
+
+    // Check if other caches have that value. Send a bus request for this address
+
+    // penaltyCycles += 100; // Memory fetch  --> We don't know whether memory access or other cache gives value
     int victimIndex = set.findVictim();
 
-    if (set.lines[victimIndex].valid && set.lines[victimIndex].dirty)
+    // there are two cases now, either we have a free line or we need to evict a line
+    //  for a free line the initial state is INVALID, so it won't go into the next if 
+
+    if (set.lines[victimIndex].state == MODIFIED)
     {
         // Writeback dirty line
         penaltyCycles += 100;
@@ -59,20 +67,20 @@ bool Cache::access(uint32_t address, char op, int cycle, int &penaltyCycles)
     if (op == 'R')
     {
         bool shared = bus->broadcast(address, 'R', coreId); // Ensure shared status is returned
-        set.lines[victimIndex] = {tag, shared ? SHARED : EXCLUSIVE, true, false, cycle};
-        penaltyCycles += shared ? 2 * (1 << b) : 0;
+        set.lines[victimIndex] = {tag, shared ? SHARED : EXCLUSIVE, cycle};
+        penaltyCycles += shared ? 2 * (1 << b) : 100;
     }
     else
     {
         bool shared = bus->broadcast(address, 'W', coreId); // Ensure shared status is returned
-        set.lines[victimIndex] = {tag, MODIFIED, true, true, cycle};
-        penaltyCycles += shared ? 2 * (1 << b) : 0;
+        set.lines[victimIndex] = {tag, MODIFIED, cycle};
+        penaltyCycles += 100;
     }
 
     return false;
 }
 
-void Cache::snoop(uint32_t address, char op, int cycle)
+bool Cache::snoop(uint32_t address, char op, int &penaltyCycles)
 {
     uint32_t setIndex = (address >> b) & ((1 << s) - 1);
     uint32_t tag = address >> (s + b);
@@ -81,7 +89,7 @@ void Cache::snoop(uint32_t address, char op, int cycle)
     int lineIndex = set.findLine(tag);
 
     if (lineIndex == -1 || set.lines[lineIndex].state == INVALID)
-        return;
+        return false;
 
     MESIState &state = set.lines[lineIndex].state;
 
@@ -89,14 +97,30 @@ void Cache::snoop(uint32_t address, char op, int cycle)
     {
         if (state == MODIFIED)
         {
-            set.lines[lineIndex].dirty = false;
+            // write back to the memory 
+            bus->broadcast(address, 'B', coreId);
+            // increase the penalty cycles for this snooping cache
+            penaltyCycles += 100;
+
+            // set.lines[lineIndex].dirty = false;
         }
         state = SHARED;
+        return true ;
     }
     else if (op == 'W' || op == 'U')
     {
+        if (state == MODIFIED) {
+            //             Snooping processor sees this
+            //  Blocks RWITM request
+            //  Takes control of bus
+            //  Writes back its copy to memory
+            bus->broadcast(address, 'B', coreId);
+            penaltyCycles += 100;
+        }
+
+        // W when the access cache had write miss, U when it was in shared
         state = INVALID;
     }
-
-    set.updateLRU(lineIndex, cycle);
+    return false ;
+    // set.updateLRU(lineIndex, cycle);
 }
