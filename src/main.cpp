@@ -46,6 +46,7 @@ int main(int argc, char *argv[])
         Cache *cache = new Cache(s, E, b, i, &bus);
         bus.registerCache(cache);
         cores.push_back(new Core(i, cache));
+        (*cache).add_core(cores[i]);
     }
 
     for (int i = 0; i < 4; ++i)

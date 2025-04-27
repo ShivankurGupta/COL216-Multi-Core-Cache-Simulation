@@ -1,4 +1,5 @@
 #include "Cache.hpp"
+#include "Core.cpp"
 #include "Bus.hpp"
 #include <cmath>
 
@@ -116,4 +117,8 @@ bool Cache::snoop(uint32_t address, char op, int &penaltyCycles)
     }
     return true ;
     // set.updateLRU(lineIndex, cycle);
+}
+
+void add_core(Core* core){
+    core = core;
 }

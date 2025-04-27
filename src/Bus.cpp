@@ -19,6 +19,7 @@ bool Bus::broadcast(uint32_t address, char op, int sourceId)
         {
             int penaltyCycles_for_snooping = 0;
             cache_sharing = cache_sharing || (caches[i]->snoop(address, op, penaltyCycles_for_snooping)); 
+            
             // update the penalty cycles for the snooping cache
             // caches[i]->
             // if (op == 'R' || op == 'W')
