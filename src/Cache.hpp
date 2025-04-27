@@ -10,10 +10,10 @@ private:
     int numSets;
     std::vector<CacheSet> sets;
     Bus *bus; // Pointer to Bus
-    Core* core; // Pointer to Core
     int coreId;
-
-public:
+    
+    public:
+    Core* core; // Pointer to Core
     Cache(int s, int E, int b, int coreId, Bus *bus);
     void add_core(Core* core);
     bool access(uint32_t address, char op, int cycle, int &penaltyCycles);

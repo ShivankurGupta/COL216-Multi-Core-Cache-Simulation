@@ -94,6 +94,7 @@ bool Cache::snoop(uint32_t address, char op, int &penaltyCycles)
         {
             // write back to the memory 
             bus->broadcast(address, 'B', coreId);
+            core->writebacks++;
             // increase the penalty cycles for this snooping cache
             penaltyCycles += 100;
 
@@ -109,6 +110,7 @@ bool Cache::snoop(uint32_t address, char op, int &penaltyCycles)
             //  Takes control of bus
             //  Writes back its copy to memory
             bus->broadcast(address, 'B', coreId);
+            core->writebacks++;
             penaltyCycles += 100;
         }
 
