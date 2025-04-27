@@ -7,7 +7,7 @@ void Bus::registerCache(Cache *cache)
     caches.push_back(cache);
 }
 
-//  R : Read    W : Write     U : Update    B : Writeback
+//  R : Mem Read    W : RWITM(Write Miss)     I : Invalidate(Write Hit)    B : Writeback
 
 bool Bus::broadcast(uint32_t address, char op, int sourceId)
 {
@@ -29,7 +29,7 @@ bool Bus::broadcast(uint32_t address, char op, int sourceId)
     }
 
     // update the whole below of the logic correctly...when there is traffic when there is not or invalidations
-    if (op == 'W' || op == 'U')
+    if (op == 'W' || op == 'I')
     {
         //  it always reads from memory as per the protocol for now. 
         // So no traffic here
@@ -42,7 +42,7 @@ bool Bus::broadcast(uint32_t address, char op, int sourceId)
         int blockSizeBytes = 1 << caches[0]->getBlockBits();
         dataTrafficBytes += blockSizeBytes;
     }
-    else if (op == 'U')
+    else if (op == 'I')
     {
         dataTrafficBytes += 0;
     }

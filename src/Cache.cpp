@@ -29,18 +29,10 @@ bool Cache::access(uint32_t address, char op, int cycle, int &penaltyCycles)
     {
         if (op == 'W')
         {
-            // set.lines[lineIndex].dirty = true;
             if (set.lines[lineIndex].state == SHARED)
             {
-                // Upgrade to MODIFIED (BusUpgr)
-                bus->broadcast(address, 'U', coreId);
-                // set.lines[lineIndex].state = MODIFIED;
-                // penaltyCycles += 2;
+                bus->broadcast(address, 'I', coreId);
             }
-            // else if (set.lines[lineIndex].state == EXCLUSIVE)
-            // {
-            //     set.lines[lineIndex].state = MODIFIED;
-            // }
             set.lines[lineIndex].state = MODIFIED;
         }
         return true;
@@ -108,7 +100,7 @@ bool Cache::snoop(uint32_t address, char op, int &penaltyCycles)
         }
         state = SHARED;
     }
-    else if (op == 'W' || op == 'U')
+    else if (op == 'W' || op == 'I')
     {
         if (state == MODIFIED) {
             //             Snooping processor sees this
@@ -119,7 +111,7 @@ bool Cache::snoop(uint32_t address, char op, int &penaltyCycles)
             penaltyCycles += 100;
         }
 
-        // W when the access cache had write miss, U when it was in shared
+        // W when the access cache had write miss, I when it was in shared
         state = INVALID;
     }
     return true ;
