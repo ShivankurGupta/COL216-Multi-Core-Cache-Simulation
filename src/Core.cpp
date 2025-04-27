@@ -21,33 +21,56 @@ void Core::recordTrace(const string &filename)
 
 void Core::processTrace(int currentCycle)
 {
-    if(currentCycle != totalCycles){
+    if (currentCycle != totalCycles)
+    {
         return;
     }
-    string line;
-    getline(infile, line);
-    if (line.empty() || line[0] == '#')
-        return;
-
-    istringstream iss(line);
     char op;
     uint32_t address;
-    if (!(iss >> op >> hex >> address))
+    if (!repeat)
     {
-        cerr << "Malformed trace line: " << line << endl;
-        return;
+        string line;
+        getline(infile, line);
+        if (line.empty() || line[0] == '#')
+            return;
+
+        istringstream iss(line);
+
+        if (!(iss >> op >> hex >> address))
+        {
+            cerr << "Malformed trace line: " << line << endl;
+            return;
+        }
+
+        address &= 0xFFFFFFFF; // to ensure that all the addresses are 32 bits.
+
+        totalAccesses++;
+        if (op == 'R')
+            readCount++;
+        if (op == 'W')
+            writeCount++;
+    }
+    else
+    {
+        op = repeat_op;
+        address = repeat_address;
+        repeat = false;
     }
 
-    address &= 0xFFFFFFFF; // to ensure that all the addresses are 32 bits.
-
-    totalAccesses++;
-    if (op == 'R')
-        readCount++;
-    if (op == 'W')
-        writeCount++;
-
     int penalty = 0;
-    bool hit = cache->access(address, op, currentCycle, penalty);
+
+    pair<bool, bool> temp = cache->access(address, op, currentCycle, penalty);
+    bool hit = temp.first;
+    bool should_repeat = temp.second;
+    if (should_repeat)
+    {
+        repeat = true;
+        repeat_op = op;
+        repeat_address = address;
+        totalCycles += 1;
+        idleCycles += 1;
+        return;
+    }
 
     if (!hit)
         cacheMisses++;

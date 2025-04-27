@@ -14,7 +14,7 @@ Cache::Cache(int s, int E, int b, int coreId, Bus *bus)
     }
 }
 
-bool Cache::access(uint32_t address, char op, int cycle, int &penaltyCycles)
+pair<bool, bool> Cache::access(uint32_t address, char op, int cycle, int &penaltyCycles)
 {
     uint32_t blockOffset = address & ((1 << b) - 1);
     uint32_t setIndex = (address >> b) & ((1 << s) - 1);
@@ -36,11 +36,13 @@ bool Cache::access(uint32_t address, char op, int cycle, int &penaltyCycles)
             }
             set.lines[lineIndex].state = MODIFIED;
         }
-        return true;
+        return {true, false};
     }
 
     // Cache miss
-
+    if(bus->bus_cycles > cycle){
+        return {true, true};
+    }
     // Check if other caches have that value. Send a bus request for this address
 
     // penaltyCycles += 100; // Memory fetch  --> We don't know whether memory access or other cache gives value
@@ -70,7 +72,7 @@ bool Cache::access(uint32_t address, char op, int cycle, int &penaltyCycles)
         penaltyCycles += 100;
     }
 
-    return false;
+    return {false, false};
 }
 
 bool Cache::snoop(uint32_t address, char op, int &penaltyCycles)

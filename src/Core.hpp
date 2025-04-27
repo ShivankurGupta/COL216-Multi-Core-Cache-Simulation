@@ -19,6 +19,10 @@ public:
     int totalCycles;
     int idleCycles;
 
+    bool repeat = false;
+    char repeat_op;
+    uint32_t repeat_address;
+
     Core(int id, Cache* cache);
     void recordTrace(const std::string& filename);
     void processTrace(int currentCycle);
