@@ -1,9 +1,7 @@
 #pragma once
 #include "CacheSet.hpp"
+#include "Bus.hpp"
 #include <vector>
-
-// Forward declaration of Bus class
-class Bus;
 
 class Cache
 {
