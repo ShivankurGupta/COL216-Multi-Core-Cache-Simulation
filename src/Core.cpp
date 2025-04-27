@@ -38,6 +38,8 @@ void Core::processTrace(int currentCycle)
         return;
     }
 
+    address &= 0xFFFFFFFF; // to ensure that all the addresses are 32 bits.
+
     totalAccesses++;
     if (op == 'R')
         readCount++;
