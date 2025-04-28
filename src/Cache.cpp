@@ -66,6 +66,7 @@ pair<bool, bool> Cache::access(uint32_t address, char op, int cycle, int &penalt
         // Writeback dirty line
         penaltyCycles += 100;
         bus->broadcast(address, 'B', coreId); // Corrected from recordWriteback
+        core->writebacks++;
         bus->bus_cycles += 100;
     }
 
