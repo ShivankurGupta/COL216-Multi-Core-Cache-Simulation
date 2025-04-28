@@ -18,6 +18,7 @@ public:
     int writebacks;
     int totalCycles;
     int idleCycles;
+    int execCycle;
 
     bool repeat = false;
     char repeat_op;

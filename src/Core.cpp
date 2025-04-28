@@ -7,7 +7,7 @@ using namespace std;
 
 Core::Core(int id, Cache *cache)
     : id(id), cache(cache), totalAccesses(0), readCount(0), writeCount(0),
-      cacheMisses(0), evictions(0), writebacks(0), totalCycles(0), idleCycles(0) {}
+      cacheMisses(0), evictions(0), writebacks(0), totalCycles(0), idleCycles(0), execCycle(0) {}
 
 void Core::recordTrace(const string &filename)
 {
@@ -75,8 +75,8 @@ void Core::processTrace(int currentCycle)
     if (!hit)
         cacheMisses++;
 
-    totalCycles += penalty > 0 ? penalty : 1;
-    idleCycles += penalty;
+    totalCycles += penalty + 1;
+    execCycle += penalty + 1;
 
     infile.close();
 }

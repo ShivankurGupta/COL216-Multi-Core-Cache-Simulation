@@ -3,14 +3,14 @@
 CacheSet::CacheSet(int associativity) {
     lines.resize(associativity);
     for (auto& line : lines) {
-        line.state = INVALID;
+        line.state = EMPTY; // Initialize all lines to EMPTY state
         line.lastUsedCycle = -1;
     }
 }
 
 int CacheSet::findLine(uint32_t tag) {
     for (size_t i = 0; i < lines.size(); ++i) {
-        if (!(lines[i].state == INVALID) && lines[i].tag == tag) {
+        if (!(lines[i].state == INVALID || lines[i].state == EMPTY) && lines[i].tag == tag) {
             return static_cast<int>(i);
         }
     }
@@ -22,7 +22,7 @@ int CacheSet::findVictim() {
     int minCycle = lines[0].lastUsedCycle;
 
     for (size_t i = 1; i < lines.size(); ++i) {
-        if (lines[i].state == INVALID) {
+        if (lines[i].state == EMPTY) {
             return static_cast<int>(i); // Choose an invalid line if available
         }
         if (lines[i].lastUsedCycle < minCycle) {

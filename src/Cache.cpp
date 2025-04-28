@@ -32,7 +32,12 @@ pair<bool, bool> Cache::access(uint32_t address, char op, int cycle, int &penalt
         {
             if (set.lines[lineIndex].state == SHARED)
             {
+                if (bus->bus_cycles > cycle)
+                {
+                    return {true, true};
+                }
                 bus->broadcast(address, 'I', coreId);
+                bus->bus_cycles += 1;
             }
             set.lines[lineIndex].state = MODIFIED;
         }
@@ -40,22 +45,28 @@ pair<bool, bool> Cache::access(uint32_t address, char op, int cycle, int &penalt
     }
 
     // Cache miss
-    if(bus->bus_cycles > cycle){
+    if (bus->bus_cycles > cycle)
+    {
         return {true, true};
     }
     // Check if other caches have that value. Send a bus request for this address
 
     // penaltyCycles += 100; // Memory fetch  --> We don't know whether memory access or other cache gives value
     int victimIndex = set.findVictim();
+    if (!set.lines[victimIndex].state == EMPTY){
+        core->evictions++;
+    }
 
     // there are two cases now, either we have a free line or we need to evict a line
-    //  for a free line the initial state is INVALID, so it won't go into the next if 
+    //  for a free line the initial state is INVALID, so it won't go into the next if
 
+    // TODO: Check if this penalty is to be added to the exec or idle cycles
     if (set.lines[victimIndex].state == MODIFIED)
     {
         // Writeback dirty line
         penaltyCycles += 100;
         bus->broadcast(address, 'B', coreId); // Corrected from recordWriteback
+        bus->bus_cycles += 100;
     }
 
     // BusRd or BusRdX
@@ -64,12 +75,14 @@ pair<bool, bool> Cache::access(uint32_t address, char op, int cycle, int &penalt
         bool shared = bus->broadcast(address, 'R', coreId); // Ensure shared status is returned
         set.lines[victimIndex] = {tag, shared ? SHARED : EXCLUSIVE, cycle};
         penaltyCycles += shared ? 2 * (1 << b) : 100;
+        bus->bus_cycles += shared ? 2 * (1 << b) : 100;
     }
     else
     {
         bus->broadcast(address, 'W', coreId); // Ensure shared status is returned
+        bus->bus_cycles += 100;
         set.lines[victimIndex] = {tag, MODIFIED, cycle};
-        penaltyCycles += 100;
+        penaltyCycles += 200;
     }
 
     return {false, false};
@@ -83,19 +96,20 @@ bool Cache::snoop(uint32_t address, char op, int &penaltyCycles)
     CacheSet &set = sets[setIndex];
     int lineIndex = set.findLine(tag);
 
-    if (lineIndex == -1 || set.lines[lineIndex].state == INVALID)
+    if (lineIndex == -1 || set.lines[lineIndex].state == INVALID || set.lines[lineIndex].state == EMPTY)
         return false;
 
     MESIState &state = set.lines[lineIndex].state;
-    
+
     // if there is sharing then always return true.
 
     if (op == 'R')
     {
         if (state == MODIFIED)
         {
-            // write back to the memory 
+            // write back to the memory
             bus->broadcast(address, 'B', coreId);
+            bus->bus_cycles += 100;
             core->writebacks++;
             // increase the penalty cycles for this snooping cache
             penaltyCycles += 100;
@@ -106,12 +120,14 @@ bool Cache::snoop(uint32_t address, char op, int &penaltyCycles)
     }
     else if (op == 'W' || op == 'I')
     {
-        if (state == MODIFIED) {
+        if (state == MODIFIED)
+        {
             //             Snooping processor sees this
             //  Blocks RWITM request
             //  Takes control of bus
             //  Writes back its copy to memory
             bus->broadcast(address, 'B', coreId);
+            bus->bus_cycles += 100;
             core->writebacks++;
             penaltyCycles += 100;
         }
@@ -119,10 +135,11 @@ bool Cache::snoop(uint32_t address, char op, int &penaltyCycles)
         // W when the access cache had write miss, I when it was in shared
         state = INVALID;
     }
-    return true ;
+    return true;
     // set.updateLRU(lineIndex, cycle);
 }
 
-void add_core(Core* core){
+void add_core(Core *core)
+{
     core = core;
 }
