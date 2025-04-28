@@ -1,4 +1,5 @@
 #include "Core.hpp"
+#include "Cache.hpp"
 #include <fstream>
 #include <sstream>
 #include <iostream>

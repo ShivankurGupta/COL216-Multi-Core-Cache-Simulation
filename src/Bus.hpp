@@ -1,7 +1,8 @@
 #pragma once
 #include <vector>
 #include <cstdint>
-#include "Cache.hpp"
+
+class Cache;
 
 class Bus
 {

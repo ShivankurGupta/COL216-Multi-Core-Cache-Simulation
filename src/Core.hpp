@@ -1,8 +1,9 @@
 #pragma once
-#include "Cache.hpp"
 #include <fstream>
 #include <sstream>
 #include <string>
+
+class Cache;
 
 using namespace std;
 

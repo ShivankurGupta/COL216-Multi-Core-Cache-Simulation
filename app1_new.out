@@ -1,0 +1,34 @@
+Core 0:
+  Reads: 0
+  Writes: 1
+  Miss Rate: 1
+  Total Cycles: 201
+  Idle Cycles: 0
+  Evictions: 0
+  Writebacks: 0
+Core 1:
+  Reads: 1
+  Writes: 0
+  Miss Rate: 1
+  Total Cycles: 201
+  Idle Cycles: 100
+  Evictions: 0
+  Writebacks: 0
+Core 2:
+  Reads: 0
+  Writes: 1
+  Miss Rate: 1
+  Total Cycles: 401
+  Idle Cycles: 200
+  Evictions: 0
+  Writebacks: 0
+Core 3:
+  Reads: 1
+  Writes: 0
+  Miss Rate: 1
+  Total Cycles: 401
+  Idle Cycles: 300
+  Evictions: 0
+  Writebacks: 0
+Invalidations: 0
+Data Traffic (bytes): 1024

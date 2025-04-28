@@ -1,5 +1,6 @@
 #include "Bus.hpp"
-
+#include "Cache.hpp"
+#include "Core.hpp"
 Bus::Bus() : invalidations(0), dataTrafficBytes(0) {}
 
 void Bus::registerCache(Cache *cache)

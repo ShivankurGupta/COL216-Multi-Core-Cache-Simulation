@@ -1,5 +1,5 @@
 #include "Cache.hpp"
-#include "Core.cpp"
+#include "Core.hpp"
 #include "Bus.hpp"
 #include <cmath>
 
@@ -53,7 +53,7 @@ pair<bool, bool> Cache::access(uint32_t address, char op, int cycle, int &penalt
 
     // penaltyCycles += 100; // Memory fetch  --> We don't know whether memory access or other cache gives value
     int victimIndex = set.findVictim();
-    if (!set.lines[victimIndex].state == EMPTY){
+    if (!(set.lines[victimIndex].state == EMPTY)){
         core->evictions++;
     }
 
@@ -140,7 +140,7 @@ bool Cache::snoop(uint32_t address, char op, int &penaltyCycles)
     // set.updateLRU(lineIndex, cycle);
 }
 
-void add_core(Core *core)
+void Cache::add_core(Core *core)
 {
-    core = core;
+    this->core = core;
 }
