@@ -59,7 +59,7 @@ void Core::processTrace(int currentCycle)
     }
 
     int penalty = 0;
-
+    cout<<"access called for core id  "<< id << " for address " << hex << address << " with op " << op << endl;
     pair<bool, bool> temp = cache->access(address, op, currentCycle, penalty);
     bool hit = temp.first;
     bool should_repeat = temp.second;
@@ -76,8 +76,10 @@ void Core::processTrace(int currentCycle)
     if (!hit)
         cacheMisses++;
 
-    totalCycles += penalty + 1;
-    execCycle += penalty + 1;
+
+    // AMBER and others -> told to change
+    totalCycles += penalty;
+    execCycle += penalty;
 
     infile.close();
 }

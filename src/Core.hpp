@@ -3,6 +3,8 @@
 #include <sstream>
 #include <string>
 
+class Bus;
+
 class Cache;
 
 using namespace std;

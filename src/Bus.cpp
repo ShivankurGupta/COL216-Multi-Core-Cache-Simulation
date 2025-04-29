@@ -1,7 +1,8 @@
 #include "Bus.hpp"
 #include "Cache.hpp"
 #include "Core.hpp"
-Bus::Bus() : invalidations(0), dataTrafficBytes(0) {}
+#include <iostream>
+Bus::Bus() : invalidations(0), dataTrafficBytes(0), bus_cycles(-1) {}
 
 void Bus::registerCache(Cache *cache)
 {
@@ -23,6 +24,7 @@ bool Bus::broadcast(uint32_t address, char op, int sourceId)
             caches[i]->core->totalCycles += penaltyCycles_for_snooping;
         }
     }
+    cout<<"cache sharing is " << cache_sharing << endl; 
 
     // update the whole below of the logic correctly...when there is traffic when there is not or invalidations
     if (op == 'W' || op == 'I')

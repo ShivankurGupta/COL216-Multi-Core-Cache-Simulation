@@ -2,6 +2,8 @@
 #include "Core.hpp"
 #include "Bus.hpp"
 #include <cmath>
+using namespace std;
+#include <iostream>
 
 Cache::Cache(int s, int E, int b, int coreId, Bus *bus)
     : s(s), E(E), b(b), coreId(coreId), bus(bus)
@@ -32,7 +34,7 @@ pair<bool, bool> Cache::access(uint32_t address, char op, int cycle, int &penalt
         {
             if (set.lines[lineIndex].state == SHARED)
             {
-                if (bus->bus_cycles > cycle)
+                if (bus->bus_cycles >= cycle)
                 {
                     return {true, true};
                 }
@@ -45,10 +47,11 @@ pair<bool, bool> Cache::access(uint32_t address, char op, int cycle, int &penalt
     }
 
     // Cache miss
-    if (bus->bus_cycles > cycle)
+    if (bus->bus_cycles >= cycle)
     {
         return {true, true};
     }
+    bus->bus_cycles = cycle ;
     // Check if other caches have that value. Send a bus request for this address
 
     // penaltyCycles += 100; // Memory fetch  --> We don't know whether memory access or other cache gives value
@@ -75,8 +78,8 @@ pair<bool, bool> Cache::access(uint32_t address, char op, int cycle, int &penalt
     {
         bool shared = bus->broadcast(address, 'R', coreId); // Ensure shared status is returned
         set.lines[victimIndex] = {tag, shared ? SHARED : EXCLUSIVE, cycle};
-        penaltyCycles += shared ? 2 * (1 << b) : 100;
-        bus->bus_cycles += shared ? 2 * (1 << b) : 100;
+        penaltyCycles += shared ? 2 * (1 << (b-2)) : 100;
+        bus->bus_cycles += shared ? 2 * (1 << (b-2)) : 100;
     }
     else
     {

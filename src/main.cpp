@@ -62,9 +62,10 @@ int main(int argc, char *argv[])
         finished = true;
         for (auto &core : cores)
         {
-            if (!core->infile.eof())
+            if (!(core->infile.eof()) || core->repeat)
             {
                 finished = false;
+                
                 core->processTrace(currentCycle);
             }
         }
