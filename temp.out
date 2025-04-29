@@ -1,0 +1,3606 @@
+===== SIMULATION PARAMETERS =====
+Trace prefix: ./traces/app4
+Cache params: s=4 E=1 b=5
+Output file: app4_new.out
+================================
+
+[BUS] Initialized
+[CACHE 0] Created with 16 sets, 1 lines per set, 32 bytes per block
+[BUS] Registered cache 0
+[INIT] Created Core 0 with Cache
+[CACHE 1] Created with 16 sets, 1 lines per set, 32 bytes per block
+[BUS] Registered cache 1
+[INIT] Created Core 1 with Cache
+[CACHE 2] Created with 16 sets, 1 lines per set, 32 bytes per block
+[BUS] Registered cache 2
+[INIT] Created Core 2 with Cache
+[CACHE 3] Created with 16 sets, 1 lines per set, 32 bytes per block
+[BUS] Registered cache 3
+[INIT] Created Core 3 with Cache
+[CORE 0] Opened trace file: ./traces/app4_proc0.trace
+[INIT] Core 0 reading trace file: ./traces/app4_proc0.trace
+[CORE 1] Opened trace file: ./traces/app4_proc1.trace
+[INIT] Core 1 reading trace file: ./traces/app4_proc1.trace
+[CORE 2] Opened trace file: ./traces/app4_proc2.trace
+[INIT] Core 2 reading trace file: ./traces/app4_proc2.trace
+[CORE 3] Opened trace file: ./traces/app4_proc3.trace
+[INIT] Core 3 reading trace file: ./traces/app4_proc3.trace
+
+[CYCLE] ========== Starting Cycle 0 ==========
+[CYCLE 0] Processing Core 0
+[CORE 0] NOT IN REPEAT
+[CORE 0] Processing R 0x1a00 (Access #1)
+[CACHE 0] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 0] MISS
+[SET] Selected LRU victim at index 0 with lastUsedCycle=-1, state=EMPTY
+[CACHE 0] Read miss, broadcasting BusRd
+[BUS] Broadcasting: R 0x1a00 from source 0
+[BUS] Operation: Read (BusRd)
+[BUS] Snooping cache 1
+[CACHE 1] Snooping: R 0x1a00 (set=0, tag=0xd)
+[SET] Line with tag 0xd not found
+[CACHE 1] Snooping: Line not found or invalid
+[BUS] Snooping cache 2
+[CACHE 2] Snooping: R 0x1a00 (set=0, tag=0xd)
+[SET] Line with tag 0xd not found
+[CACHE 2] Snooping: Line not found or invalid
+[BUS] Snooping cache 3
+[CACHE 3] Snooping: R 0x1a00 (set=0, tag=0xd)
+[SET] Line with tag 0xd not found
+[CACHE 3] Snooping: Line not found or invalid
+[BUS] Cache sharing: NO
+[BUS] Adding 32 bytes to data traffic, total=32
+[CACHE 0] Line EXCLUSIVE in other caches
+[CACHE 0] Added penalty: 100 cycles, new state=EXCLUSIVE
+[CORE 0] Access result: MISS, Penalty: 100 cycles
+[CORE 0] Adding 100 cycles, total: 100
+[CORE 0] Stats: Misses=1, Evictions=0, Writebacks=0
+[CYCLE 0] Processing Core 1
+[CORE 1] NOT IN REPEAT
+[CORE 1] Processing R 0x1a00 (Access #1)
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 0] Processing Core 2
+[CORE 2] NOT IN REPEAT
+[CORE 2] Processing R 0x1a00 (Access #1)
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 0] Processing Core 3
+[CORE 3] NOT IN REPEAT
+[CORE 3] Processing R 0xb300 (Access #1)
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 1] Processing Core 0
+[CORE 0] Cycle mismatch: current=1, total=100, skipping
+[CYCLE 1] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 1] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 1] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 2] Processing Core 0
+[CORE 0] Cycle mismatch: current=2, total=100, skipping
+[CYCLE 2] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 2] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 2] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 3] Processing Core 0
+[CORE 0] Cycle mismatch: current=3, total=100, skipping
+[CYCLE 3] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 3] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 3] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 4] Processing Core 0
+[CORE 0] Cycle mismatch: current=4, total=100, skipping
+[CYCLE 4] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 4] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 4] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 5] Processing Core 0
+[CORE 0] Cycle mismatch: current=5, total=100, skipping
+[CYCLE 5] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 5] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 5] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 6] Processing Core 0
+[CORE 0] Cycle mismatch: current=6, total=100, skipping
+[CYCLE 6] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 6] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 6] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 7] Processing Core 0
+[CORE 0] Cycle mismatch: current=7, total=100, skipping
+[CYCLE 7] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 7] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 7] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 8] Processing Core 0
+[CORE 0] Cycle mismatch: current=8, total=100, skipping
+[CYCLE 8] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 8] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 8] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 9] Processing Core 0
+[CORE 0] Cycle mismatch: current=9, total=100, skipping
+[CYCLE 9] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 9] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 9] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 10] Processing Core 0
+[CORE 0] Cycle mismatch: current=10, total=100, skipping
+[CYCLE 10] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 10] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 10] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 11] Processing Core 0
+[CORE 0] Cycle mismatch: current=11, total=100, skipping
+[CYCLE 11] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 11] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 11] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 12] Processing Core 0
+[CORE 0] Cycle mismatch: current=12, total=100, skipping
+[CYCLE 12] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 12] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 12] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 13] Processing Core 0
+[CORE 0] Cycle mismatch: current=13, total=100, skipping
+[CYCLE 13] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 13] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 13] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 14] Processing Core 0
+[CORE 0] Cycle mismatch: current=14, total=100, skipping
+[CYCLE 14] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 14] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 14] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 15] Processing Core 0
+[CORE 0] Cycle mismatch: current=15, total=100, skipping
+[CYCLE 15] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 15] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 15] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 16] Processing Core 0
+[CORE 0] Cycle mismatch: current=16, total=100, skipping
+[CYCLE 16] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 16] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 16] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 17] Processing Core 0
+[CORE 0] Cycle mismatch: current=17, total=100, skipping
+[CYCLE 17] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 17] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 17] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 18] Processing Core 0
+[CORE 0] Cycle mismatch: current=18, total=100, skipping
+[CYCLE 18] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 18] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 18] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 19] Processing Core 0
+[CORE 0] Cycle mismatch: current=19, total=100, skipping
+[CYCLE 19] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 19] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 19] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 20] Processing Core 0
+[CORE 0] Cycle mismatch: current=20, total=100, skipping
+[CYCLE 20] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 20] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 20] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 21] Processing Core 0
+[CORE 0] Cycle mismatch: current=21, total=100, skipping
+[CYCLE 21] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 21] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 21] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 22] Processing Core 0
+[CORE 0] Cycle mismatch: current=22, total=100, skipping
+[CYCLE 22] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 22] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 22] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 23] Processing Core 0
+[CORE 0] Cycle mismatch: current=23, total=100, skipping
+[CYCLE 23] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 23] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 23] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 24] Processing Core 0
+[CORE 0] Cycle mismatch: current=24, total=100, skipping
+[CYCLE 24] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 24] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 24] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 25] Processing Core 0
+[CORE 0] Cycle mismatch: current=25, total=100, skipping
+[CYCLE 25] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 25] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 25] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 26] Processing Core 0
+[CORE 0] Cycle mismatch: current=26, total=100, skipping
+[CYCLE 26] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 26] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 26] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 27] Processing Core 0
+[CORE 0] Cycle mismatch: current=27, total=100, skipping
+[CYCLE 27] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 27] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 27] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 28] Processing Core 0
+[CORE 0] Cycle mismatch: current=28, total=100, skipping
+[CYCLE 28] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 28] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 28] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 29] Processing Core 0
+[CORE 0] Cycle mismatch: current=29, total=100, skipping
+[CYCLE 29] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 29] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 29] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 30] Processing Core 0
+[CORE 0] Cycle mismatch: current=30, total=100, skipping
+[CYCLE 30] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 30] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 30] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 31] Processing Core 0
+[CORE 0] Cycle mismatch: current=31, total=100, skipping
+[CYCLE 31] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 31] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 31] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 32] Processing Core 0
+[CORE 0] Cycle mismatch: current=32, total=100, skipping
+[CYCLE 32] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 32] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 32] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 33] Processing Core 0
+[CORE 0] Cycle mismatch: current=33, total=100, skipping
+[CYCLE 33] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 33] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 33] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 34] Processing Core 0
+[CORE 0] Cycle mismatch: current=34, total=100, skipping
+[CYCLE 34] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 34] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 34] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 35] Processing Core 0
+[CORE 0] Cycle mismatch: current=35, total=100, skipping
+[CYCLE 35] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 35] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 35] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 36] Processing Core 0
+[CORE 0] Cycle mismatch: current=36, total=100, skipping
+[CYCLE 36] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 36] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 36] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 37] Processing Core 0
+[CORE 0] Cycle mismatch: current=37, total=100, skipping
+[CYCLE 37] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 37] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 37] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 38] Processing Core 0
+[CORE 0] Cycle mismatch: current=38, total=100, skipping
+[CYCLE 38] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 38] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 38] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 39] Processing Core 0
+[CORE 0] Cycle mismatch: current=39, total=100, skipping
+[CYCLE 39] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 39] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 39] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 40] Processing Core 0
+[CORE 0] Cycle mismatch: current=40, total=100, skipping
+[CYCLE 40] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 40] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 40] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 41] Processing Core 0
+[CORE 0] Cycle mismatch: current=41, total=100, skipping
+[CYCLE 41] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 41] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 41] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 42] Processing Core 0
+[CORE 0] Cycle mismatch: current=42, total=100, skipping
+[CYCLE 42] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 42] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 42] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 43] Processing Core 0
+[CORE 0] Cycle mismatch: current=43, total=100, skipping
+[CYCLE 43] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 43] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 43] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 44] Processing Core 0
+[CORE 0] Cycle mismatch: current=44, total=100, skipping
+[CYCLE 44] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 44] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 44] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 45] Processing Core 0
+[CORE 0] Cycle mismatch: current=45, total=100, skipping
+[CYCLE 45] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 45] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 45] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 46] Processing Core 0
+[CORE 0] Cycle mismatch: current=46, total=100, skipping
+[CYCLE 46] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 46] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 46] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 47] Processing Core 0
+[CORE 0] Cycle mismatch: current=47, total=100, skipping
+[CYCLE 47] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 47] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 47] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 48] Processing Core 0
+[CORE 0] Cycle mismatch: current=48, total=100, skipping
+[CYCLE 48] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 48] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 48] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 49] Processing Core 0
+[CORE 0] Cycle mismatch: current=49, total=100, skipping
+[CYCLE 49] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 49] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 49] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 50] Processing Core 0
+[CORE 0] Cycle mismatch: current=50, total=100, skipping
+[CYCLE 50] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 50] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 50] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 51] Processing Core 0
+[CORE 0] Cycle mismatch: current=51, total=100, skipping
+[CYCLE 51] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 51] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 51] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 52] Processing Core 0
+[CORE 0] Cycle mismatch: current=52, total=100, skipping
+[CYCLE 52] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 52] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 52] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 53] Processing Core 0
+[CORE 0] Cycle mismatch: current=53, total=100, skipping
+[CYCLE 53] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 53] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 53] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 54] Processing Core 0
+[CORE 0] Cycle mismatch: current=54, total=100, skipping
+[CYCLE 54] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 54] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 54] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 55] Processing Core 0
+[CORE 0] Cycle mismatch: current=55, total=100, skipping
+[CYCLE 55] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 55] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 55] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 56] Processing Core 0
+[CORE 0] Cycle mismatch: current=56, total=100, skipping
+[CYCLE 56] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 56] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 56] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 57] Processing Core 0
+[CORE 0] Cycle mismatch: current=57, total=100, skipping
+[CYCLE 57] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 57] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 57] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 58] Processing Core 0
+[CORE 0] Cycle mismatch: current=58, total=100, skipping
+[CYCLE 58] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 58] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 58] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 59] Processing Core 0
+[CORE 0] Cycle mismatch: current=59, total=100, skipping
+[CYCLE 59] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 59] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 59] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 60] Processing Core 0
+[CORE 0] Cycle mismatch: current=60, total=100, skipping
+[CYCLE 60] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 60] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 60] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 61] Processing Core 0
+[CORE 0] Cycle mismatch: current=61, total=100, skipping
+[CYCLE 61] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 61] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 61] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 62] Processing Core 0
+[CORE 0] Cycle mismatch: current=62, total=100, skipping
+[CYCLE 62] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 62] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 62] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 63] Processing Core 0
+[CORE 0] Cycle mismatch: current=63, total=100, skipping
+[CYCLE 63] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 63] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 63] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 64] Processing Core 0
+[CORE 0] Cycle mismatch: current=64, total=100, skipping
+[CYCLE 64] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 64] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 64] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 65] Processing Core 0
+[CORE 0] Cycle mismatch: current=65, total=100, skipping
+[CYCLE 65] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 65] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 65] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 66] Processing Core 0
+[CORE 0] Cycle mismatch: current=66, total=100, skipping
+[CYCLE 66] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 66] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 66] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 67] Processing Core 0
+[CORE 0] Cycle mismatch: current=67, total=100, skipping
+[CYCLE 67] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 67] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 67] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 68] Processing Core 0
+[CORE 0] Cycle mismatch: current=68, total=100, skipping
+[CYCLE 68] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 68] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 68] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 69] Processing Core 0
+[CORE 0] Cycle mismatch: current=69, total=100, skipping
+[CYCLE 69] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 69] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 69] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 70] Processing Core 0
+[CORE 0] Cycle mismatch: current=70, total=100, skipping
+[CYCLE 70] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 70] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 70] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 71] Processing Core 0
+[CORE 0] Cycle mismatch: current=71, total=100, skipping
+[CYCLE 71] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 71] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 71] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 72] Processing Core 0
+[CORE 0] Cycle mismatch: current=72, total=100, skipping
+[CYCLE 72] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 72] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 72] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 73] Processing Core 0
+[CORE 0] Cycle mismatch: current=73, total=100, skipping
+[CYCLE 73] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 73] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 73] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 74] Processing Core 0
+[CORE 0] Cycle mismatch: current=74, total=100, skipping
+[CYCLE 74] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 74] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 74] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 75] Processing Core 0
+[CORE 0] Cycle mismatch: current=75, total=100, skipping
+[CYCLE 75] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 75] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 75] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 76] Processing Core 0
+[CORE 0] Cycle mismatch: current=76, total=100, skipping
+[CYCLE 76] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 76] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 76] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 77] Processing Core 0
+[CORE 0] Cycle mismatch: current=77, total=100, skipping
+[CYCLE 77] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 77] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 77] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 78] Processing Core 0
+[CORE 0] Cycle mismatch: current=78, total=100, skipping
+[CYCLE 78] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 78] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 78] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 79] Processing Core 0
+[CORE 0] Cycle mismatch: current=79, total=100, skipping
+[CYCLE 79] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 79] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 79] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 80] Processing Core 0
+[CORE 0] Cycle mismatch: current=80, total=100, skipping
+[CYCLE 80] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 80] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 80] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 81] Processing Core 0
+[CORE 0] Cycle mismatch: current=81, total=100, skipping
+[CYCLE 81] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 81] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 81] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 82] Processing Core 0
+[CORE 0] Cycle mismatch: current=82, total=100, skipping
+[CYCLE 82] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 82] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 82] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 83] Processing Core 0
+[CORE 0] Cycle mismatch: current=83, total=100, skipping
+[CYCLE 83] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 83] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 83] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 84] Processing Core 0
+[CORE 0] Cycle mismatch: current=84, total=100, skipping
+[CYCLE 84] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 84] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 84] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 85] Processing Core 0
+[CORE 0] Cycle mismatch: current=85, total=100, skipping
+[CYCLE 85] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 85] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 85] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 86] Processing Core 0
+[CORE 0] Cycle mismatch: current=86, total=100, skipping
+[CYCLE 86] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 86] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 86] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 87] Processing Core 0
+[CORE 0] Cycle mismatch: current=87, total=100, skipping
+[CYCLE 87] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 87] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 87] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 88] Processing Core 0
+[CORE 0] Cycle mismatch: current=88, total=100, skipping
+[CYCLE 88] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 88] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 88] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 89] Processing Core 0
+[CORE 0] Cycle mismatch: current=89, total=100, skipping
+[CYCLE 89] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 89] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 89] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 90] Processing Core 0
+[CORE 0] Cycle mismatch: current=90, total=100, skipping
+[CYCLE 90] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 90] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 90] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 91] Processing Core 0
+[CORE 0] Cycle mismatch: current=91, total=100, skipping
+[CYCLE 91] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 91] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 91] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 92] Processing Core 0
+[CORE 0] Cycle mismatch: current=92, total=100, skipping
+[CYCLE 92] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 92] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 92] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 93] Processing Core 0
+[CORE 0] Cycle mismatch: current=93, total=100, skipping
+[CYCLE 93] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 93] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 93] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 94] Processing Core 0
+[CORE 0] Cycle mismatch: current=94, total=100, skipping
+[CYCLE 94] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 94] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 94] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 95] Processing Core 0
+[CORE 0] Cycle mismatch: current=95, total=100, skipping
+[CYCLE 95] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 95] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 95] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 96] Processing Core 0
+[CORE 0] Cycle mismatch: current=96, total=100, skipping
+[CYCLE 96] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 96] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 96] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 97] Processing Core 0
+[CORE 0] Cycle mismatch: current=97, total=100, skipping
+[CYCLE 97] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 97] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 97] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 98] Processing Core 0
+[CORE 0] Cycle mismatch: current=98, total=100, skipping
+[CYCLE 98] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 98] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 98] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 99] Processing Core 0
+[CORE 0] Cycle mismatch: current=99, total=100, skipping
+[CYCLE 99] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 99] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 99] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 100] Processing Core 0
+[CORE 0] NOT IN REPEAT
+[CYCLE 100] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[CACHE 1] Bus busy, will repeat access
+[CORE 1] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 1] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 100] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 100] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 101] Processing Core 1
+[CORE 1] IN REPEAT
+[CORE 1] Repeating R 0x1a00 from previous cycle
+[CACHE 1] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 1] MISS
+[SET] Selected LRU victim at index 0 with lastUsedCycle=-1, state=EMPTY
+[CACHE 1] Read miss, broadcasting BusRd
+[BUS] Broadcasting: R 0x1a00 from source 1
+[BUS] Operation: Read (BusRd)
+[BUS] Snooping cache 0
+[CACHE 0] Snooping: R 0x1a00 (set=0, tag=0xd)
+[SET] Found line with tag 0xd at index 0 with state EXCLUSIVE
+[CACHE 0] Snooping: Found line 0 with state=EXCLUSIVE
+[CACHE 0] Snooping: Changing state to SHARED
+[BUS] Cache 0 responded, penalty=0 cycles
+[BUS] Snooping cache 2
+[CACHE 2] Snooping: R 0x1a00 (set=0, tag=0xd)
+[SET] Line with tag 0xd not found
+[CACHE 2] Snooping: Line not found or invalid
+[BUS] Snooping cache 3
+[CACHE 3] Snooping: R 0x1a00 (set=0, tag=0xd)
+[SET] Line with tag 0xd not found
+[CACHE 3] Snooping: Line not found or invalid
+[BUS] Cache sharing: YES
+[BUS] Adding 32 bytes to data traffic, total=64
+[CACHE 1] Line SHARED in other caches
+[CACHE 1] Added penalty: 16 cycles, new state=SHARED
+[CORE 1] Access result: MISS, Penalty: 16 cycles
+[CORE 1] Adding 16 cycles, total: 117
+[CORE 1] Stats: Misses=1, Evictions=0, Writebacks=0
+[CYCLE 101] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 101] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 102] Processing Core 1
+[CORE 1] Cycle mismatch: current=102, total=117, skipping
+[CYCLE 102] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 102] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 103] Processing Core 1
+[CORE 1] Cycle mismatch: current=103, total=117, skipping
+[CYCLE 103] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 103] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 104] Processing Core 1
+[CORE 1] Cycle mismatch: current=104, total=117, skipping
+[CYCLE 104] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 104] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 105] Processing Core 1
+[CORE 1] Cycle mismatch: current=105, total=117, skipping
+[CYCLE 105] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 105] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 106] Processing Core 1
+[CORE 1] Cycle mismatch: current=106, total=117, skipping
+[CYCLE 106] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 106] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 107] Processing Core 1
+[CORE 1] Cycle mismatch: current=107, total=117, skipping
+[CYCLE 107] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 107] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 108] Processing Core 1
+[CORE 1] Cycle mismatch: current=108, total=117, skipping
+[CYCLE 108] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 108] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 109] Processing Core 1
+[CORE 1] Cycle mismatch: current=109, total=117, skipping
+[CYCLE 109] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 109] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 110] Processing Core 1
+[CORE 1] Cycle mismatch: current=110, total=117, skipping
+[CYCLE 110] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 110] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 111] Processing Core 1
+[CORE 1] Cycle mismatch: current=111, total=117, skipping
+[CYCLE 111] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 111] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 112] Processing Core 1
+[CORE 1] Cycle mismatch: current=112, total=117, skipping
+[CYCLE 112] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 112] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 113] Processing Core 1
+[CORE 1] Cycle mismatch: current=113, total=117, skipping
+[CYCLE 113] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 113] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 114] Processing Core 1
+[CORE 1] Cycle mismatch: current=114, total=117, skipping
+[CYCLE 114] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 114] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 115] Processing Core 1
+[CORE 1] Cycle mismatch: current=115, total=117, skipping
+[CYCLE 115] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 115] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 116] Processing Core 1
+[CORE 1] Cycle mismatch: current=116, total=117, skipping
+[CYCLE 116] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 116] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 117] Processing Core 1
+[CORE 1] NOT IN REPEAT
+[CYCLE 117] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[CACHE 2] Bus busy, will repeat access
+[CORE 2] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 2] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 117] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 118] Processing Core 2
+[CORE 2] IN REPEAT
+[CORE 2] Repeating R 0x1a00 from previous cycle
+[CACHE 2] Access: R 0x1a00 (set=0, tag=0xd, offset=0)
+[SET] Line with tag 0xd not found
+[CACHE 2] MISS
+[SET] Selected LRU victim at index 0 with lastUsedCycle=-1, state=EMPTY
+[CACHE 2] Read miss, broadcasting BusRd
+[BUS] Broadcasting: R 0x1a00 from source 2
+[BUS] Operation: Read (BusRd)
+[BUS] Snooping cache 0
+[CACHE 0] Snooping: R 0x1a00 (set=0, tag=0xd)
+[SET] Found line with tag 0xd at index 0 with state SHARED
+[CACHE 0] Snooping: Found line 0 with state=SHARED
+[CACHE 0] Snooping: Changing state to SHARED
+[BUS] Cache 0 responded, penalty=0 cycles
+[BUS] Snooping cache 1
+[CACHE 1] Snooping: R 0x1a00 (set=0, tag=0xd)
+[SET] Found line with tag 0xd at index 0 with state SHARED
+[CACHE 1] Snooping: Found line 0 with state=SHARED
+[CACHE 1] Snooping: Changing state to SHARED
+[BUS] Cache 1 responded, penalty=0 cycles
+[BUS] Snooping cache 3
+[CACHE 3] Snooping: R 0x1a00 (set=0, tag=0xd)
+[SET] Line with tag 0xd not found
+[CACHE 3] Snooping: Line not found or invalid
+[BUS] Cache sharing: YES
+[BUS] Adding 32 bytes to data traffic, total=96
+[CACHE 2] Line SHARED in other caches
+[CACHE 2] Added penalty: 16 cycles, new state=SHARED
+[CORE 2] Access result: MISS, Penalty: 16 cycles
+[CORE 2] Adding 16 cycles, total: 134
+[CORE 2] Stats: Misses=1, Evictions=0, Writebacks=0
+[CYCLE 118] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 119] Processing Core 2
+[CORE 2] Cycle mismatch: current=119, total=134, skipping
+[CYCLE 119] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 120] Processing Core 2
+[CORE 2] Cycle mismatch: current=120, total=134, skipping
+[CYCLE 120] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 121] Processing Core 2
+[CORE 2] Cycle mismatch: current=121, total=134, skipping
+[CYCLE 121] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 122] Processing Core 2
+[CORE 2] Cycle mismatch: current=122, total=134, skipping
+[CYCLE 122] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 123] Processing Core 2
+[CORE 2] Cycle mismatch: current=123, total=134, skipping
+[CYCLE 123] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 124] Processing Core 2
+[CORE 2] Cycle mismatch: current=124, total=134, skipping
+[CYCLE 124] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 125] Processing Core 2
+[CORE 2] Cycle mismatch: current=125, total=134, skipping
+[CYCLE 125] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 126] Processing Core 2
+[CORE 2] Cycle mismatch: current=126, total=134, skipping
+[CYCLE 126] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 127] Processing Core 2
+[CORE 2] Cycle mismatch: current=127, total=134, skipping
+[CYCLE 127] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 128] Processing Core 2
+[CORE 2] Cycle mismatch: current=128, total=134, skipping
+[CYCLE 128] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 129] Processing Core 2
+[CORE 2] Cycle mismatch: current=129, total=134, skipping
+[CYCLE 129] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 130] Processing Core 2
+[CORE 2] Cycle mismatch: current=130, total=134, skipping
+[CYCLE 130] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 131] Processing Core 2
+[CORE 2] Cycle mismatch: current=131, total=134, skipping
+[CYCLE 131] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 132] Processing Core 2
+[CORE 2] Cycle mismatch: current=132, total=134, skipping
+[CYCLE 132] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 133] Processing Core 2
+[CORE 2] Cycle mismatch: current=133, total=134, skipping
+[CYCLE 133] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 134] Processing Core 2
+[CORE 2] NOT IN REPEAT
+[CYCLE 134] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[CACHE 3] Bus busy, will repeat access
+[CORE 3] Access result: HIT (REPEATING), Penalty: 0 cycles
+[CORE 3] Will repeat in next cycle, adding 1 idle cycle
+[CYCLE 135] Processing Core 3
+[CORE 3] IN REPEAT
+[CORE 3] Repeating R 0xb300 from previous cycle
+[CACHE 3] Access: R 0xb300 (set=8, tag=0x59, offset=0)
+[SET] Line with tag 0x59 not found
+[CACHE 3] MISS
+[SET] Selected LRU victim at index 0 with lastUsedCycle=-1, state=EMPTY
+[CACHE 3] Read miss, broadcasting BusRd
+[BUS] Broadcasting: R 0xb300 from source 3
+[BUS] Operation: Read (BusRd)
+[BUS] Snooping cache 0
+[CACHE 0] Snooping: R 0xb300 (set=8, tag=0x59)
+[SET] Line with tag 0x59 not found
+[CACHE 0] Snooping: Line not found or invalid
+[BUS] Snooping cache 1
+[CACHE 1] Snooping: R 0xb300 (set=8, tag=0x59)
+[SET] Line with tag 0x59 not found
+[CACHE 1] Snooping: Line not found or invalid
+[BUS] Snooping cache 2
+[CACHE 2] Snooping: R 0xb300 (set=8, tag=0x59)
+[SET] Line with tag 0x59 not found
+[CACHE 2] Snooping: Line not found or invalid
+[BUS] Cache sharing: NO
+[BUS] Adding 32 bytes to data traffic, total=128
+[CACHE 3] Line EXCLUSIVE in other caches
+[CACHE 3] Added penalty: 100 cycles, new state=EXCLUSIVE
+[CORE 3] Access result: MISS, Penalty: 100 cycles
+[CORE 3] Adding 100 cycles, total: 235
+[CORE 3] Stats: Misses=1, Evictions=0, Writebacks=0
+
+===== SIMULATION COMPLETED =====
+Total Cycles: 137
+================================
+
