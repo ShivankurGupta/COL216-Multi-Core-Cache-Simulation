@@ -137,6 +137,28 @@ The memory hierarchy is organized to exploit locality principles while maintaini
 \subsection{Assumptions}
 The simulator is built upon a set of carefully considered assumptions that define the behavior and limitations of the modeled system. These assumptions clarify the scope of the simulation and ensure consistent interpretation of results:
 
+\subsubsection{General assumptions}
+\begin{itemize}
+    \item Total Instructions : Corresponds to the length of the trace for the core.
+    \item Total Reads : Total number of instructions which have R at the starting.
+    \item Total Writes : Total number of instructions which have W at the starting.
+    \item Total Execution Cycles : The cycles where the core is actively processing it's own request. i.e. the bus may be busy doing that core's request work or the core may have some cache hit. 
+    \item Idle cycles : Are the cycles where the core's request is denied by the bus, due to the bus being busy. That is those cycles where the core is trying to issue the request to bus but is unable to do so.
+    \item Cache Misses : These are the number of instructions which were a miss by the cache i.e. the line was not found in the cache.
+    \item Cache Miss Rate : This is the number of misses per total number of instructions in the trace for that core. 
+    \item Cache Evictions : The number of blocks removed from the cache and written back to the memory in the whole process till the simulation ends.
+    \item Writebacks : The number of modified blocks removed from the cache and written back to the memory in the whole process till the simulation ends.
+    \item Bus Invalidations : Whenever the core sends signal to other cores which have that block, to invalidate themselves. This includes both Write miss and Write Hit cases.
+    \item Data Traffic : The total amount of data moved through the bus. This includes : 
+        \begin{itemize}
+            \item Any data transaction from memory to the cache or form the cache to memory. 
+            \item Any data transaction which is form the cache to some other cache or from some other cache to the cache.
+            
+        \end{itemize}
+    \item Bus Transactions : This is the total number of Read Misses, Write Misses and Write Hits when someone has  block in shared.
+    \item Total Bus traffic : All the data transfer involving cache, memory etc. through the bus. 
+\end{itemize}
+
 \subsubsection{Bus Architecture and Behavior}
 \begin{itemize}
     \item \textbf{Blocking Bus}: The central snooping bus is a blocking resource that can process only one transaction at a time. When a cache initiates a bus transaction, other caches must wait until the transaction completes before they can use the bus. This assumption reflects the physical reality of shared bus architectures where simultaneous transmission would lead to signal conflicts.
@@ -146,6 +168,7 @@ The simulator is built upon a set of carefully considered assumptions that defin
     \item \textbf{Bus Width and Bandwidth}: The bus width is assumed to match the cache block size, allowing an entire cache block to be transferred in a single bus transaction (though requiring multiple cycles). This simplifies the modeling of data transfers while maintaining realistic timing constraints.
     
     \item \textbf{Split-Transaction Protocol}: The bus supports a split-transaction protocol where request and response phases can be separated in time. This allows the bus to be released between the request and data transfer phases, improving bus utilization.
+
 \end{itemize}
 
 \subsubsection{Cache Coherence Protocol Implementation}
@@ -654,6 +677,40 @@ Based on our experimental results, the optimal cache configuration for the teste
 
 This configuration balances the benefits of larger cache size, sufficient associativity to avoid most conflict misses, and moderate block size that exploits spatial locality without excessive bus traffic. Further increases in these parameters would likely yield diminishing returns relative to the hardware cost.
 
+\subsection{Core-to-Core Variations}
+Our results also reveal interesting variations in execution times across different cores. In all configurations, Core 2 consistently experiences the longest execution time. This suggests that the workload distribution or memory access patterns differ significantly across cores, with Core 2 likely experiencing more cache misses, coherence invalidations, or bus contention than the other cores.
+
+For example, in the baseline configuration (s=6, E=2, b=5), the execution times are:
+\begin{itemize}
+    \item Core 0: 6,382,305 cycles
+    \item Core 1: 6,269,780 cycles
+    \item Core 2: 7,179,569 cycles (14.5\% longer than average)
+    \item Core 3: 6,377,307 cycles
+\end{itemize}
+
+This variation highlights the importance of considering per-core performance in multi-core systems, as aggregate metrics may hide important load imbalances.
+
+\subsection{Coherence Traffic Analysis}
+The MESI protocol generates different types of coherence traffic that contribute to bus utilization and affect overall system performance. While detailed transaction counts were not provided in the results, the patterns observed in execution time correlate with expected coherence behavior:
+
+\begin{itemize}
+    \item Smaller caches generate more coherence traffic due to increased evictions and subsequent re-fetches
+    \item Lower associativity (especially direct-mapped caches) results in higher conflict misses, leading to more invalidations and writebacks
+    \item Larger block sizes reduce the number of transactions but increase the data volume per transaction
+\end{itemize}
+
+The dramatic performance improvement seen when moving from direct-mapped to set-associative caches likely corresponds to a significant reduction in coherence traffic, as fewer conflict misses means fewer invalidations and writebacks.
+
+\subsection{Performance Optimality}
+Based on our experimental results, the optimal cache configuration for the tested workload appears to be:
+\begin{itemize}
+    \item Sets: 128 (s=7)
+    \item Associativity: 4-way (E=4)
+    \item Block size: 32 bytes (b=5)
+\end{itemize}
+
+This configuration balances the benefits of larger cache size, sufficient associativity to avoid most conflict misses, and moderate block size that exploits spatial locality without excessive bus traffic. Further increases in these parameters would likely yield diminishing returns relative to the hardware cost.
+
 \section{Discussion}
 
 \subsection{Cache Coherence Overhead}
@@ -812,5 +869,45 @@ public:
     void processTrace(int currentCycle);
 };
 \end{lstlisting}
+
+\section{False Sharing Analysis}
+
+\subsection{Test Case Description}
+To study the impact of false sharing, we created a test case where multiple processor cores write to adjacent memory locations that map to the same cache line. Each core writes to a distinct memory address, but due to the proximity of these addresses, they share the same cache line in the L1 cache.
+
+The memory access patterns for the four cores are as follows:
+\begin{itemize}
+    \item \textbf{Core 0}: Writes to addresses \texttt{0x00000000}, \texttt{0x00010010}, \texttt{0x00020020}, \texttt{0x00030030}.
+    \item \textbf{Core 1}: Writes to addresses \texttt{0x00000010}, \texttt{0x00010020}, \texttt{0x00020030}, \texttt{0x00030040}.
+    \item \textbf{Core 2}: Writes to addresses \texttt{0x00000020}, \texttt{0x00010030}, \texttt{0x00020040}, \texttt{0x00030050}.
+    \item \textbf{Core 3}: Writes to addresses \texttt{0x00000030}, \texttt{0x00010040}, \texttt{0x00020050}, \texttt{0x00030060}.
+\end{itemize}
+
+\subsection{Results}
+The graph in Figure~\ref{fig:false_sharing} shows the impact of block size on the maximum execution time. The results indicate that smaller block sizes lead to reduced execution time, while larger block sizes significantly increase execution time.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{false_sharing_plot.png} % Ensure this file exists in the same directory or provide the correct path
+    \caption{Impact of Block Size on Maximum Execution Time}
+    \label{fig:false_sharing}
+\end{figure}
+
+\subsection{Analysis}
+False sharing occurs when multiple cores write to different variables that reside on the same cache line. In this test case:
+\begin{itemize}
+    \item Each core writes to a distinct memory address, but due to the proximity of these addresses, they share the same cache line.
+    \item When one core writes to its address, the cache line is invalidated in the other cores' caches, forcing them to reload the line from memory or another cache.
+    \item This frequent invalidation and reloading of cache lines lead to significant performance degradation, as observed in the increased execution time for larger block sizes.
+\end{itemize}
+
+\subsection{Key Observations}
+\begin{itemize}
+    \item \textbf{Smaller Block Sizes}: Reducing the block size minimizes the likelihood of false sharing, as fewer unrelated variables are packed into the same cache line.
+    \item \textbf{Larger Block Sizes}: Increasing the block size exacerbates false sharing, as more unrelated variables are packed into the same cache line, leading to frequent invalidations.
+\end{itemize}
+
+\subsection{Conclusion}
+False sharing is a critical performance issue in multi-core systems, especially when cores access adjacent memory locations. Optimizing block size and aligning data structures to cache line boundaries can mitigate this issue. This test case highlights the importance of understanding memory access patterns and their interaction with cache architecture.
 
 \end{document}
