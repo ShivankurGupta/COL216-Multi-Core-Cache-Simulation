@@ -80,7 +80,11 @@ bool Bus::broadcast(uint32_t address, char op, int sourceId)
                           << penaltyCycles_for_snooping << " cycles" << std::endl;
             }
 
-            caches[i]->core->totalCycles += penaltyCycles_for_snooping;
+            // caches[i]->core->totalCycles += penaltyCycles_for_snooping;
+            if (op=='W'){
+                caches[sourceId]->core->totalCycles += penaltyCycles_for_snooping;
+                caches[sourceId]->core->idleCycles += penaltyCycles_for_snooping;
+            }
         }
     }
 

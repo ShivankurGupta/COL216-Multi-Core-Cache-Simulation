@@ -1,34 +1,68 @@
-Core 0:
-  Reads: 0
-  Writes: 1
-  Miss Rate: 1
-  Total Cycles: 201
-  Idle Cycles: 0
-  Evictions: 0
-  Writebacks: 0
-Core 1:
-  Reads: 1
-  Writes: 0
-  Miss Rate: 1
-  Total Cycles: 201
-  Idle Cycles: 100
-  Evictions: 0
-  Writebacks: 0
-Core 2:
-  Reads: 0
-  Writes: 1
-  Miss Rate: 1
-  Total Cycles: 401
-  Idle Cycles: 200
-  Evictions: 0
-  Writebacks: 0
-Core 3:
-  Reads: 1
-  Writes: 0
-  Miss Rate: 1
-  Total Cycles: 401
-  Idle Cycles: 300
-  Evictions: 0
-  Writebacks: 0
-Invalidations: 0
-Data Traffic (bytes): 1024
+Simulation Parameters:
+Trace Prefix: ./assignment3_traces/app1
+Set Index Bits: 6
+Associativity: 2
+Block Bits: 5
+Block Size (Bytes): 32
+Number of Sets: 64
+Cache Size (KB per core): 4
+MESI Protocol: Enabled
+Write Policy: Write-back, Write-allocate
+Replacement Policy: LRU
+Bus: Central snooping bus
+
+Core 0 Statistics:
+Total Instructions: 2497349
+Total Reads: 1489888
+Total Writes: 1007461
+Total Execution Cycles: 6887789
+Idle Cycles: 1607358
+Cache Misses: 35751
+Cache Miss Rate: 1.43156%
+Cache Evictions: 35623
+Writebacks: 7201
+Bus Invalidations: 73
+Data Traffic (Bytes): 1807008
+
+Core 1 Statistics:
+Total Instructions: 2490468
+Total Reads: 1485857
+Total Writes: 1004611
+Total Execution Cycles: 6760848
+Idle Cycles: 4140708
+Cache Misses: 35214
+Cache Miss Rate: 1.41395%
+Cache Evictions: 35086
+Writebacks: 6792
+Bus Invalidations: 41
+Data Traffic (Bytes): 1494208
+
+Core 2 Statistics:
+Total Instructions: 2509057
+Total Reads: 1492629
+Total Writes: 1016428
+Total Execution Cycles: 7973989
+Idle Cycles: 7785033
+Cache Misses: 40739
+Cache Miss Rate: 1.62368%
+Cache Evictions: 40611
+Writebacks: 10465
+Bus Invalidations: 150
+Data Traffic (Bytes): 1662464
+
+Core 3 Statistics:
+Total Instructions: 2503127
+Total Reads: 1493736
+Total Writes: 1009391
+Total Execution Cycles: 6881515
+Idle Cycles: 11222133
+Cache Misses: 35887
+Cache Miss Rate: 1.43369%
+Cache Evictions: 35759
+Writebacks: 7002
+Bus Invalidations: 20
+Data Traffic (Bytes): 1408544
+
+Overall Bus Summary:
+Total Bus Transactions: 179051
+Total Bus Traffic (Bytes): 5729632

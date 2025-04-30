@@ -189,7 +189,7 @@ pair<bool, bool> Cache::access(uint32_t address, char op, int cycle, int &penalt
         bus->bus_cycles += 100;
         core->dataTraffic += (1<<b);
         set.lines[victimIndex] = {tag, MODIFIED, cycle};
-        penaltyCycles += 200;
+        penaltyCycles += 100;
 
         if (DEBUG_MODE)
         {
