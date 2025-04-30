@@ -91,7 +91,6 @@ pair<bool, bool> Cache::access(uint32_t address, char op, int cycle, int &penalt
                 }
 
                 bus->broadcast(address, 'I', coreId);
-                core->invalidations++;
                 bus->bus_cycles += 1;
             }
 
@@ -252,7 +251,7 @@ bool Cache::snoop(uint32_t address, char op, int &penaltyCycles)
         {
             cout << "[CACHE " << coreId << "] Snooping: Changing state to SHARED" << endl;
         }
-
+        core->dataTraffic += (1<<b);
         state = SHARED;
     }
     else if (op == 'W' || op == 'I')
@@ -265,6 +264,7 @@ bool Cache::snoop(uint32_t address, char op, int &penaltyCycles)
             }
 
             bus->broadcast(address, 'B', coreId);
+            core->dataTraffic += (1<<b);
             bus->bus_cycles += 100;
             core->writebacks++;
             penaltyCycles += 100;

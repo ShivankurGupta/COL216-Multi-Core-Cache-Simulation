@@ -76,6 +76,9 @@ bool Bus::broadcast(uint32_t address, char op, int sourceId)
             }
 
             caches[i]->core->totalCycles += penaltyCycles_for_snooping;
+            if (cache_sharing) {
+                break;
+            }
         }
     }
 
@@ -89,6 +92,8 @@ bool Bus::broadcast(uint32_t address, char op, int sourceId)
         if (cache_sharing)
         {
             ++invalidations;
+            // cache invalidation of sender cache add up 
+            caches[sourceId]->core->invalidations++;
             if (DEBUG_MODE)
             {
                 std::cout << "[BUS] Incrementing invalidations to " << invalidations << std::endl;
@@ -100,6 +105,7 @@ bool Bus::broadcast(uint32_t address, char op, int sourceId)
     {
         int blockSizeBytes = 1 << caches[0]->getBlockBits();
         dataTrafficBytes += blockSizeBytes;
+        transactions++;
         if (DEBUG_MODE)
         {
             std::cout << "[BUS] Adding " << blockSizeBytes << " bytes to data traffic, total="
@@ -114,6 +120,7 @@ bool Bus::broadcast(uint32_t address, char op, int sourceId)
     { // Handle writeback
         int blockSizeBytes = 1 << caches[0]->getBlockBits();
         dataTrafficBytes += blockSizeBytes;
+        transactions++;
         if (DEBUG_MODE)
         {
             std::cout << "[BUS] Writeback: adding " << blockSizeBytes

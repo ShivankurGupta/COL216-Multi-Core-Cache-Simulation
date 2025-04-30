@@ -11,8 +11,8 @@ Core 1:
   Reads: 1
   Writes: 1
   Miss Rate: 0.5
-  Total Cycles: 318
-  Execution Cycles: 18
+  Total Cycles: 319
+  Execution Cycles: 19
   Idle Cycles: 201
   Evictions: 0
   Writebacks: 1
@@ -20,8 +20,8 @@ Core 2:
   Reads: 1
   Writes: 1
   Miss Rate: 0.5
-  Total Cycles: 336
-  Execution Cycles: 18
+  Total Cycles: 337
+  Execution Cycles: 19
   Idle Cycles: 319
   Evictions: 0
   Writebacks: 0

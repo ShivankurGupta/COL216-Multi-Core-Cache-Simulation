@@ -1,34 +1,38 @@
 Core 0:
   Reads: 7
   Writes: 3
-  Miss Rate: 0.7
-  Total Cycles: 1261
-  Idle Cycles: 152
+  Miss Rate: 0.8
+  Total Cycles: 1363
+  Execution Cycles: 1211
+  Idle Cycles: 153
   Evictions: 2
   Writebacks: 2
 Core 1:
   Reads: 11
   Writes: 0
   Miss Rate: 1
-  Total Cycles: 1666
-  Idle Cycles: 808
+  Total Cycles: 1768
+  Execution Cycles: 859
+  Idle Cycles: 910
   Evictions: 0
   Writebacks: 0
 Core 2:
   Reads: 7
   Writes: 5
   Miss Rate: 1
-  Total Cycles: 3531
-  Idle Cycles: 1940
+  Total Cycles: 3633
+  Execution Cycles: 1692
+  Idle Cycles: 2042
   Evictions: 8
   Writebacks: 3
 Core 3:
   Reads: 8
   Writes: 2
   Miss Rate: 1
-  Total Cycles: 3632
-  Idle Cycles: 2659
+  Total Cycles: 3734
+  Execution Cycles: 1074
+  Idle Cycles: 2761
   Evictions: 3
   Writebacks: 1
 Invalidations: 2
-Data Traffic (bytes): 1472
+Data Traffic (bytes): 1504
