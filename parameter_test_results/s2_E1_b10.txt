@@ -1,5 +1,5 @@
 Simulation Parameters:
-Trace Prefix: traces/false2
+Trace Prefix: false2
 Set Index Bits: 2
 Associativity: 1
 Block Bits: 10

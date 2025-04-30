@@ -1,5 +1,5 @@
 Simulation Parameters:
-Trace Prefix: traces/false1
+Trace Prefix: false2
 Set Index Bits: 2
 Associativity: 1
 Block Bits: 4
@@ -15,54 +15,54 @@ Core 0 Statistics:
 Total Instructions: 4
 Total Reads: 0
 Total Writes: 4
-Total Execution Cycles: 404
+Total Execution Cycles: 704
 Idle Cycles: 0
 Cache Misses: 4
 Cache Miss Rate: 100.00%
-Cache Evictions: 0
-Writebacks: 0
+Cache Evictions: 3
+Writebacks: 3
 Bus Invalidations: 0
-Data Traffic (Bytes): 64
+Data Traffic (Bytes): 112
 
 Core 1 Statistics:
 Total Instructions: 4
 Total Reads: 0
 Total Writes: 4
-Total Execution Cycles: 404
-Idle Cycles: 404
+Total Execution Cycles: 704
+Idle Cycles: 704
 Cache Misses: 4
 Cache Miss Rate: 100.00%
-Cache Evictions: 0
-Writebacks: 0
+Cache Evictions: 3
+Writebacks: 3
 Bus Invalidations: 0
-Data Traffic (Bytes): 64
+Data Traffic (Bytes): 112
 
 Core 2 Statistics:
 Total Instructions: 4
 Total Reads: 0
 Total Writes: 4
-Total Execution Cycles: 404
-Idle Cycles: 808
+Total Execution Cycles: 704
+Idle Cycles: 1408
 Cache Misses: 4
 Cache Miss Rate: 100.00%
-Cache Evictions: 0
-Writebacks: 0
+Cache Evictions: 3
+Writebacks: 3
 Bus Invalidations: 0
-Data Traffic (Bytes): 64
+Data Traffic (Bytes): 112
 
 Core 3 Statistics:
 Total Instructions: 4
 Total Reads: 0
 Total Writes: 4
-Total Execution Cycles: 404
-Idle Cycles: 1212
+Total Execution Cycles: 704
+Idle Cycles: 2112
 Cache Misses: 4
 Cache Miss Rate: 100.00%
-Cache Evictions: 0
-Writebacks: 0
+Cache Evictions: 3
+Writebacks: 3
 Bus Invalidations: 0
-Data Traffic (Bytes): 64
+Data Traffic (Bytes): 112
 
 Overall Bus Summary:
 Total Bus Transactions: 16
-Total Bus Traffic (Bytes): 256
+Total Bus Traffic (Bytes): 448
