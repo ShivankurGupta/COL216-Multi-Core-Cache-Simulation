@@ -111,7 +111,6 @@ pair<bool, bool> Cache::access(uint32_t address, char op, int cycle, int &penalt
 
     if (bus->bus_cycles >= cycle)
     {
-        cout<<bus->bus_cycles<<endl;
         if (DEBUG_MODE)
         {
             cout << "[CACHE " << coreId << "] Bus busy, will repeat access" << endl;

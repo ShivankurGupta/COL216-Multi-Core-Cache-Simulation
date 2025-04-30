@@ -37,6 +37,11 @@ int main(int argc, char *argv[])
         }
     }
 
+    std::string tracePrefixBase = tracePrefix;
+    size_t lastSlash = tracePrefix.find_last_of("/\\");
+    if (lastSlash != std::string::npos)
+        tracePrefixBase = tracePrefix.substr(lastSlash + 1);
+
     if (DEBUG_MODE)
     {
         std::cout << "===== SIMULATION PARAMETERS =====\n";
@@ -113,7 +118,7 @@ int main(int argc, char *argv[])
     // Output stats
     // Simulation Parameters
     outFileStream << "Simulation Parameters:\n";
-    outFileStream << "Trace Prefix: " << tracePrefix << "\n";
+    outFileStream << "Trace Prefix: " << tracePrefixBase << "\n";
     outFileStream << "Set Index Bits: " << s << "\n";
     outFileStream << "Associativity: " << E << "\n";
     outFileStream << "Block Bits: " << b << "\n";
@@ -135,7 +140,7 @@ int main(int argc, char *argv[])
         outFileStream << "Total Execution Cycles: " << core->execCycle << "\n";
         outFileStream << "Idle Cycles: " << core->idleCycles << "\n";
         outFileStream << "Cache Misses: " << core->cacheMisses << "\n";
-        outFileStream << "Cache Miss Rate: " <<fixed<<setprecision(2)<< (core->totalAccesses > 0 ? (double)core->cacheMisses / core->totalAccesses * 100 : 0) << "%\n";
+        outFileStream << "Cache Miss Rate: " << fixed << setprecision(2) << (core->totalAccesses > 0 ? (double)core->cacheMisses / core->totalAccesses * 100 : 0) << "%\n";
         outFileStream << "Cache Evictions: " << core->evictions << "\n";
         outFileStream << "Writebacks: " << core->writebacks << "\n";
         outFileStream << "Bus Invalidations: " << core->invalidations << "\n";
