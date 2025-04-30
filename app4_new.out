@@ -1,38 +1,68 @@
-Core 0:
-  Reads: 1
-  Writes: 1
-  Miss Rate: 0.5
-  Total Cycles: 201
-  Execution Cycles: 102
-  Idle Cycles: 0
-  Evictions: 0
-  Writebacks: 1
-Core 1:
-  Reads: 1
-  Writes: 1
-  Miss Rate: 0.5
-  Total Cycles: 319
-  Execution Cycles: 19
-  Idle Cycles: 201
-  Evictions: 0
-  Writebacks: 1
-Core 2:
-  Reads: 1
-  Writes: 1
-  Miss Rate: 0.5
-  Total Cycles: 337
-  Execution Cycles: 19
-  Idle Cycles: 319
-  Evictions: 0
-  Writebacks: 0
-Core 3:
-  Reads: 1
-  Writes: 0
-  Miss Rate: 1
-  Total Cycles: 437
-  Execution Cycles: 101
-  Idle Cycles: 337
-  Evictions: 0
-  Writebacks: 0
-Invalidations: 2
-Data Traffic (bytes): 192
+Simulation Parameters:
+Trace Prefix: ./traces/app4
+Set Index Bits: 4
+Associativity: 1
+Block Bits: 5
+Block Size (Bytes): 32
+Number of Sets: 16
+Cache Size (KB per core): 0.5
+MESI Protocol: Enabled
+Write Policy: Write-back, Write-allocate
+Replacement Policy: LRU
+Bus: Central snooping bus
+
+Core 0 Statistics:
+Total Instructions: 2
+Total Reads: 1
+Total Writes: 1
+Total Execution Cycles: 102
+Idle Cycles: 0
+Cache Misses: 1
+Cache Miss Rate: 50%
+Cache Evictions: 0
+Writebacks: 1
+Bus Invalidations: 0
+Data Traffic (Bytes): 64
+
+Core 1 Statistics:
+Total Instructions: 2
+Total Reads: 1
+Total Writes: 1
+Total Execution Cycles: 18
+Idle Cycles: 201
+Cache Misses: 1
+Cache Miss Rate: 50%
+Cache Evictions: 0
+Writebacks: 1
+Bus Invalidations: 1
+Data Traffic (Bytes): 64
+
+Core 2 Statistics:
+Total Instructions: 2
+Total Reads: 1
+Total Writes: 1
+Total Execution Cycles: 18
+Idle Cycles: 319
+Cache Misses: 1
+Cache Miss Rate: 50%
+Cache Evictions: 0
+Writebacks: 0
+Bus Invalidations: 1
+Data Traffic (Bytes): 32
+
+Core 3 Statistics:
+Total Instructions: 1
+Total Reads: 1
+Total Writes: 0
+Total Execution Cycles: 101
+Idle Cycles: 337
+Cache Misses: 1
+Cache Miss Rate: 100%
+Cache Evictions: 0
+Writebacks: 0
+Bus Invalidations: 0
+Data Traffic (Bytes): 32
+
+Overall Bus Summary:
+Total Bus Transactions: 6
+Total Bus Traffic (Bytes): 192

@@ -136,7 +136,7 @@ pair<bool, bool> Cache::access(uint32_t address, char op, int cycle, int &penalt
 
     if (set.lines[victimIndex].state == MODIFIED)
     {
-        core->execCycle += 100;
+        // core->execCycle += 100;
         // Writeback dirty line
         if (DEBUG_MODE)
         {
