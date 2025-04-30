@@ -125,7 +125,7 @@ void Core::processTrace(int currentCycle)
 
     // AMBER and others -> told to change
     totalCycles += penalty + 1;
-    execCycle += penalty;
+    execCycle += penalty + 1;
 
     if (DEBUG_MODE)
     {

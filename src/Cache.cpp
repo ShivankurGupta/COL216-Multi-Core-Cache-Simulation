@@ -91,6 +91,7 @@ pair<bool, bool> Cache::access(uint32_t address, char op, int cycle, int &penalt
                 }
 
                 bus->broadcast(address, 'I', coreId);
+                core->invalidations++;
                 bus->bus_cycles += 1;
             }
 
@@ -122,6 +123,7 @@ pair<bool, bool> Cache::access(uint32_t address, char op, int cycle, int &penalt
     bus->bus_cycles = cycle;
 
     int victimIndex = set.findVictim();
+    
     if (!(set.lines[victimIndex].state == EMPTY))
     {
         core->evictions++;
@@ -135,6 +137,7 @@ pair<bool, bool> Cache::access(uint32_t address, char op, int cycle, int &penalt
 
     if (set.lines[victimIndex].state == MODIFIED)
     {
+        core->execCycle += 100;
         // Writeback dirty line
         if (DEBUG_MODE)
         {
@@ -143,6 +146,7 @@ pair<bool, bool> Cache::access(uint32_t address, char op, int cycle, int &penalt
 
         penaltyCycles += 100;
         bus->broadcast(address, 'B', coreId);
+        core->dataTraffic += (1<<b);
         core->writebacks++;
         bus->bus_cycles += 100;
     }
@@ -167,6 +171,8 @@ pair<bool, bool> Cache::access(uint32_t address, char op, int cycle, int &penalt
         penaltyCycles += shared ? 2 * (1 << (b - 2)) : 100;
         bus->bus_cycles += shared ? 2 * (1 << (b - 2)) : 100;
 
+        core->dataTraffic += (1<<b);
+
         if (DEBUG_MODE)
         {
             cout << "[CACHE " << coreId << "] Added penalty: " << penaltyCycles
@@ -182,6 +188,7 @@ pair<bool, bool> Cache::access(uint32_t address, char op, int cycle, int &penalt
 
         bus->broadcast(address, 'W', coreId);
         bus->bus_cycles += 100;
+        core->dataTraffic += (1<<b);
         set.lines[victimIndex] = {tag, MODIFIED, cycle};
         penaltyCycles += 200;
 

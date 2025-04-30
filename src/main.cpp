@@ -111,20 +111,41 @@ int main(int argc, char *argv[])
     }
 
     // Output stats
+    // Simulation Parameters
+    outFileStream << "Simulation Parameters:\n";
+    outFileStream << "Trace Prefix: " << tracePrefix << "\n";
+    outFileStream << "Set Index Bits: " << s << "\n";
+    outFileStream << "Associativity: " << E << "\n";
+    outFileStream << "Block Bits: " << b << "\n";
+    outFileStream << "Block Size (Bytes): " << (1 << b) << "\n";
+    outFileStream << "Number of Sets: " << (1 << s) << "\n";
+    outFileStream << "Cache Size (KB per core): " << ((1 << s) * E * (1 << b)) / 1024.0 << "\n";
+    outFileStream << "MESI Protocol: Enabled\n";
+    outFileStream << "Write Policy: Write-back, Write-allocate\n";
+    outFileStream << "Replacement Policy: LRU\n";
+    outFileStream << "Bus: Central snooping bus\n\n";
+
+    // Core Statistics
     for (auto &core : cores)
     {
-        outFileStream << "Core " << core->id << ":\n";
-        outFileStream << "  Reads: " << core->readCount << "\n";
-        outFileStream << "  Writes: " << core->writeCount << "\n";
-        outFileStream << "  Miss Rate: " << (double)core->cacheMisses / core->totalAccesses << "\n";
-        outFileStream << "  Total Cycles: " << core->totalCycles << "\n";
-        outFileStream << "  Idle Cycles: " << core->idleCycles << "\n";
-        outFileStream << "  Evictions: " << core->evictions << "\n";
-        outFileStream << "  Writebacks: " << core->writebacks << "\n";
+        outFileStream << "Core " << core->id << " Statistics:\n";
+        outFileStream << "Total Instructions: " << core->readCount + core->writeCount << "\n";
+        outFileStream << "Total Reads: " << core->readCount << "\n";
+        outFileStream << "Total Writes: " << core->writeCount << "\n";
+        outFileStream << "Total Execution Cycles: " << core->execCycle << "\n";
+        outFileStream << "Idle Cycles: " << core->idleCycles << "\n";
+        outFileStream << "Cache Misses: " << core->cacheMisses << "\n";
+        outFileStream << "Cache Miss Rate: " << (core->totalAccesses > 0 ? (double)core->cacheMisses / core->totalAccesses * 100 : 0) << "%\n";
+        outFileStream << "Cache Evictions: " << core->evictions << "\n";
+        outFileStream << "Writebacks: " << core->writebacks << "\n";
+        outFileStream << "Bus Invalidations: " << core->invalidations << "\n";
+        outFileStream << "Data Traffic (Bytes): " << core->dataTraffic << "\n\n";
     }
 
-    outFileStream << "Invalidations: " << bus.invalidations << "\n";
-    outFileStream << "Data Traffic (bytes): " << bus.dataTrafficBytes << "\n";
+    // Overall Bus Summary
+    outFileStream << "Overall Bus Summary:\n";
+    outFileStream << "Total Bus Transactions: " << bus.transactions << "\n";
+    outFileStream << "Total Bus Traffic (Bytes): " << bus.dataTrafficBytes << "\n";
 
     outFileStream.close();
 }

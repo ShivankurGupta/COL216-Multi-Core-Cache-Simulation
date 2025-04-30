@@ -22,6 +22,9 @@ public:
     int totalCycles;
     int idleCycles;
     int execCycle;
+    int invalidations;
+    int dataTraffic;
+
 
     bool repeat = false;
     char repeat_op;

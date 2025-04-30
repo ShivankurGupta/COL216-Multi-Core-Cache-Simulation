@@ -51,7 +51,7 @@ int CacheSet::findVictim()
             {
                 std::cout << "[SET] Found EMPTY line at index " << i << " for victim" << std::endl;
             }
-            return static_cast<int>(i); // Choose an invalid line if available
+            return static_cast<int>(i); // Choose an empty line if available
         }
         if (lines[i].lastUsedCycle < minCycle)
         {
