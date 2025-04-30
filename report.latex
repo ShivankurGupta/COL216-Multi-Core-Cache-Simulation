@@ -748,7 +748,6 @@ The simulator can be used to study the behavior of different applications on mul
     \item Culler, D. E., Singh, J. P., \& Gupta, A. (1999). Parallel computer architecture: a hardware/software approach. Gulf Professional Publishing.
 \end{enumerate}
 
-\appendix
 \section{Code Listing}
 The simulator is implemented using the following main classes:
 
@@ -873,8 +872,9 @@ public:
 \section{False Sharing Analysis}
 
 \subsection{Test Case Description}
-To study the impact of false sharing, we created a test case where multiple processor cores write to adjacent memory locations that map to the same cache line. Each core writes to a distinct memory address, but due to the proximity of these addresses, they share the same cache line in the L1 cache.
+To study the impact of false sharing, we created two test cases where multiple processor cores write to adjacent memory locations that map to the same cache line. Each core writes to a distinct memory address, but due to the proximity of these addresses, they share the same cache line in the L1 cache.
 
+\subsubsection{Test Case 1}
 The memory access patterns for the four cores are as follows:
 \begin{itemize}
     \item \textbf{Core 0}: Writes to addresses \texttt{0x00000000}, \texttt{0x00010010}, \texttt{0x00020020}, \texttt{0x00030030}.
@@ -883,18 +883,34 @@ The memory access patterns for the four cores are as follows:
     \item \textbf{Core 3}: Writes to addresses \texttt{0x00000030}, \texttt{0x00010040}, \texttt{0x00020050}, \texttt{0x00030060}.
 \end{itemize}
 
-\subsection{Results}
-The graph in Figure~\ref{fig:false_sharing} shows the impact of block size on the maximum execution time. The results indicate that smaller block sizes lead to reduced execution time, while larger block sizes significantly increase execution time.
+\subsubsection{Test Case 2}
+The memory access patterns for the four cores are as follows:
+\begin{itemize}
+    \item \textbf{Core 0}: Writes to addresses \texttt{0x00000000}, \texttt{0x00100100}, \texttt{0x00200200}, \texttt{0x00300300}.
+    \item \textbf{Core 1}: Writes to addresses \texttt{0x00000100}, \texttt{0x00100200}, \texttt{0x00200300}, \texttt{0x00300400}.
+    \item \textbf{Core 2}: Writes to addresses \texttt{0x00000200}, \texttt{0x00100300}, \texttt{0x00200400}, \texttt{0x00300500}.
+    \item \textbf{Core 3}: Writes to addresses \texttt{0x00000300}, \texttt{0x00100400}, \texttt{0x00200500}, \texttt{0x00300600}.
+\end{itemize}
 
-\begin{figure}[h]
+\subsection{Results}
+The graph in Figure~\ref{fig:false_sharing} shows the impact of block size on the maximum execution time for Test Case 1. Similarly, Figure~\ref{fig:false_sharing_case2} shows the results for Test Case 2. The results indicate that smaller block sizes lead to reduced execution time, while larger block sizes significantly increase execution time.
+
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{false_sharing_plot.png} % Ensure this file exists in the same directory or provide the correct path
-    \caption{Impact of Block Size on Maximum Execution Time}
+    \includegraphics[width=0.8\textwidth]{false_sharing_plot.png}
+    \caption{Impact of Block Size on Maximum Execution Time (Test Case 1)}
     \label{fig:false_sharing}
 \end{figure}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{false_sharing_plot2.png}
+    \caption{Impact of Block Size on Maximum Execution Time (Test Case 2)}
+    \label{fig:false_sharing_case2}
+\end{figure}
+
 \subsection{Analysis}
-False sharing occurs when multiple cores write to different variables that reside on the same cache line. In this test case:
+False sharing occurs when multiple cores write to different variables that reside on the same cache line. In these test cases:
 \begin{itemize}
     \item Each core writes to a distinct memory address, but due to the proximity of these addresses, they share the same cache line.
     \item When one core writes to its address, the cache line is invalidated in the other cores' caches, forcing them to reload the line from memory or another cache.
@@ -908,6 +924,6 @@ False sharing occurs when multiple cores write to different variables that resid
 \end{itemize}
 
 \subsection{Conclusion}
-False sharing is a critical performance issue in multi-core systems, especially when cores access adjacent memory locations. Optimizing block size and aligning data structures to cache line boundaries can mitigate this issue. This test case highlights the importance of understanding memory access patterns and their interaction with cache architecture.
+False sharing is a critical performance issue in multi-core systems, especially when cores access adjacent memory locations. Optimizing block size and aligning data structures to cache line boundaries can mitigate this issue. These test cases highlight the importance of understanding memory access patterns and their interaction with cache architecture.
 
 \end{document}
