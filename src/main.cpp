@@ -135,7 +135,7 @@ int main(int argc, char *argv[])
         outFileStream << "Total Execution Cycles: " << core->execCycle << "\n";
         outFileStream << "Idle Cycles: " << core->idleCycles << "\n";
         outFileStream << "Cache Misses: " << core->cacheMisses << "\n";
-        outFileStream << "Cache Miss Rate: " << (core->totalAccesses > 0 ? (double)core->cacheMisses / core->totalAccesses * 100 : 0) << "%\n";
+        outFileStream << "Cache Miss Rate: " <<fixed<<setprecision(2)<< (core->totalAccesses > 0 ? (double)core->cacheMisses / core->totalAccesses * 100 : 0) << "%\n";
         outFileStream << "Cache Evictions: " << core->evictions << "\n";
         outFileStream << "Writebacks: " << core->writebacks << "\n";
         outFileStream << "Bus Invalidations: " << core->invalidations << "\n";

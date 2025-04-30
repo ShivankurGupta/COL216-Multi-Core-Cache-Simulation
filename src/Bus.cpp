@@ -120,13 +120,16 @@ bool Bus::broadcast(uint32_t address, char op, int sourceId)
     }
     else if (op == 'I')
     {
+        if (cache_sharing) {
+            transactions ++;
+        }
         dataTrafficBytes += 0;
     }
     else if (op == 'B')
     { // Handle writeback
         int blockSizeBytes = 1 << caches[0]->getBlockBits();
         dataTrafficBytes += blockSizeBytes;
-        transactions++;
+        // transactions++;
         if (DEBUG_MODE)
         {
             std::cout << "[BUS] Writeback: adding " << blockSizeBytes
