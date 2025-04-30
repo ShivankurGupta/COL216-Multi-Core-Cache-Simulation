@@ -1,38 +1,68 @@
-Core 0:
-  Reads: 7
-  Writes: 3
-  Miss Rate: 0.8
-  Total Cycles: 1363
-  Execution Cycles: 1211
-  Idle Cycles: 153
-  Evictions: 2
-  Writebacks: 2
-Core 1:
-  Reads: 11
-  Writes: 0
-  Miss Rate: 1
-  Total Cycles: 1768
-  Execution Cycles: 859
-  Idle Cycles: 910
-  Evictions: 0
-  Writebacks: 0
-Core 2:
-  Reads: 7
-  Writes: 5
-  Miss Rate: 1
-  Total Cycles: 3633
-  Execution Cycles: 1692
-  Idle Cycles: 2042
-  Evictions: 8
-  Writebacks: 3
-Core 3:
-  Reads: 8
-  Writes: 2
-  Miss Rate: 1
-  Total Cycles: 3734
-  Execution Cycles: 1074
-  Idle Cycles: 2761
-  Evictions: 3
-  Writebacks: 1
-Invalidations: 2
-Data Traffic (bytes): 1504
+Simulation Parameters:
+Trace Prefix: ./traces/app3
+Set Index Bits: 4
+Associativity: 2
+Block Bits: 5
+Block Size (Bytes): 32
+Number of Sets: 16
+Cache Size (KB per core): 1
+MESI Protocol: Enabled
+Write Policy: Write-back, Write-allocate
+Replacement Policy: LRU
+Bus: Central snooping bus
+
+Core 0 Statistics:
+Total Instructions: 10
+Total Reads: 7
+Total Writes: 3
+Total Execution Cycles: 1010
+Idle Cycles: 151
+Cache Misses: 7
+Cache Miss Rate: 70%
+Cache Evictions: 2
+Writebacks: 2
+Bus Invalidations: 1
+Data Traffic (Bytes): 544
+
+Core 1 Statistics:
+Total Instructions: 11
+Total Reads: 11
+Total Writes: 0
+Total Execution Cycles: 859
+Idle Cycles: 807
+Cache Misses: 11
+Cache Miss Rate: 100%
+Cache Evictions: 0
+Writebacks: 0
+Bus Invalidations: 0
+Data Traffic (Bytes): 448
+
+Core 2 Statistics:
+Total Instructions: 12
+Total Reads: 7
+Total Writes: 5
+Total Execution Cycles: 1492
+Idle Cycles: 1939
+Cache Misses: 12
+Cache Miss Rate: 100%
+Cache Evictions: 8
+Writebacks: 3
+Bus Invalidations: 0
+Data Traffic (Bytes): 480
+
+Core 3 Statistics:
+Total Instructions: 10
+Total Reads: 8
+Total Writes: 2
+Total Execution Cycles: 974
+Idle Cycles: 2658
+Cache Misses: 10
+Cache Miss Rate: 100%
+Cache Evictions: 3
+Writebacks: 1
+Bus Invalidations: 1
+Data Traffic (Bytes): 352
+
+Overall Bus Summary:
+Total Bus Transactions: 46
+Total Bus Traffic (Bytes): 1472

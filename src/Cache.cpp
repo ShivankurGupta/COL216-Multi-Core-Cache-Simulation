@@ -91,7 +91,6 @@ pair<bool, bool> Cache::access(uint32_t address, char op, int cycle, int &penalt
                 }
 
                 bus->broadcast(address, 'I', coreId);
-                bus->bus_cycles += 1;
             }
 
             if (DEBUG_MODE)
@@ -112,6 +111,7 @@ pair<bool, bool> Cache::access(uint32_t address, char op, int cycle, int &penalt
 
     if (bus->bus_cycles >= cycle)
     {
+        cout<<bus->bus_cycles<<endl;
         if (DEBUG_MODE)
         {
             cout << "[CACHE " << coreId << "] Bus busy, will repeat access" << endl;
@@ -201,7 +201,7 @@ pair<bool, bool> Cache::access(uint32_t address, char op, int cycle, int &penalt
     return {false, false};
 }
 
-bool Cache::snoop(uint32_t address, char op, int &penaltyCycles)
+bool Cache::snoop(uint32_t address, char op, int &penaltyCycles,bool Addtraffic)
 {
     uint32_t setIndex = (address >> b) & ((1 << s) - 1);
     uint32_t tag = address >> (s + b);
@@ -251,7 +251,9 @@ bool Cache::snoop(uint32_t address, char op, int &penaltyCycles)
         {
             cout << "[CACHE " << coreId << "] Snooping: Changing state to SHARED" << endl;
         }
-        core->dataTraffic += (1<<b);
+        if (Addtraffic){
+            core->dataTraffic += (1<<b);
+        }
         state = SHARED;
     }
     else if (op == 'W' || op == 'I')

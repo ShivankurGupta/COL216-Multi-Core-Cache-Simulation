@@ -42,7 +42,7 @@ Total Instructions: 2
 Total Reads: 1
 Total Writes: 1
 Total Execution Cycles: 18
-Idle Cycles: 319
+Idle Cycles: 318
 Cache Misses: 1
 Cache Miss Rate: 50%
 Cache Evictions: 0
@@ -55,7 +55,7 @@ Total Instructions: 1
 Total Reads: 1
 Total Writes: 0
 Total Execution Cycles: 101
-Idle Cycles: 337
+Idle Cycles: 335
 Cache Misses: 1
 Cache Miss Rate: 100%
 Cache Evictions: 0

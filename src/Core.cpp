@@ -120,6 +120,8 @@ void Core::processTrace(int currentCycle)
         return;
     }
 
+    cout<<"should not repeat <- Vanshika "<<currentCycle<<"core id is "<<id<<endl;
+
     if (!hit)
         cacheMisses++;
 

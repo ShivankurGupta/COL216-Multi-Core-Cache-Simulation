@@ -65,8 +65,13 @@ bool Bus::broadcast(uint32_t address, char op, int sourceId)
             {
                 std::cout << "[BUS] Snooping cache " << i << std::endl;
             }
-
-            bool responded = caches[i]->snoop(address, op, penaltyCycles_for_snooping);
+            bool responded ;
+            if (cache_sharing) {
+                responded = caches[i]->snoop(address, op, penaltyCycles_for_snooping, false);
+            }
+            else {
+                responded = caches[i]->snoop(address, op, penaltyCycles_for_snooping,true);
+            }
             cache_sharing = cache_sharing || responded;
 
             if (DEBUG_MODE && responded)
@@ -76,9 +81,6 @@ bool Bus::broadcast(uint32_t address, char op, int sourceId)
             }
 
             caches[i]->core->totalCycles += penaltyCycles_for_snooping;
-            if (cache_sharing) {
-                break;
-            }
         }
     }
 
