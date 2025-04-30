@@ -1,0 +1,662 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning, fit, automata}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\title{L1 Cache Simulator for Quad-Core Processors with MESI Protocol}
+\author{Student Name\\
+Roll Number\\
+Department of Computer Science and Engineering\\
+Indian Institute of Technology Delhi
+}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Introduction}
+This report presents the design and implementation of an L1 cache simulator for quad-core processors with cache coherence support. The simulator models a system where each of the four processor cores has its own L1 data cache, which are kept coherent using the MESI (Modified, Exclusive, Shared, Invalid) cache coherence protocol. The caches are connected via a central snooping bus that facilitates coherence transactions.
+
+Cache coherence is a critical aspect of multiprocessor systems to ensure that all cores have a consistent view of memory. The MESI protocol is one of the most commonly used coherence protocols in modern processors, which maintains consistency by tracking the state of each cache line and appropriately handling read and write operations across multiple caches.
+
+\subsection{Problem Statement}
+The objective is to simulate L1 caches in a quad-core processor system with MESI cache coherence protocol support. The simulation is trace-driven, where memory reference traces from four processor cores are provided as input. The simulator tracks various statistics including hit/miss rates, writebacks, invalidations, and bus traffic, which help analyze the cache performance and coherence protocol behavior.
+
+\subsection{MESI Protocol Overview}
+The MESI protocol defines four states for each cache line:
+\begin{itemize}
+    \item \textbf{Modified (M)}: The cache line is present only in the current cache and is dirty (has been modified). The main memory copy is stale.
+    \item \textbf{Exclusive (E)}: The cache line is present only in the current cache and is clean (matches main memory).
+    \item \textbf{Shared (S)}: The cache line may be present in other caches and is clean.
+    \item \textbf{Invalid (I)}: The cache line is invalid and must be fetched from memory or another cache if needed.
+\end{itemize}
+
+State transitions occur based on processor requests and bus snooping events, ensuring data consistency across all caches.
+
+\section{System Architecture}
+
+\subsection{Overall Architecture}
+The simulator models a multiprocessor system with the following components:
+\begin{itemize}
+    \item Four processor cores, each with its own L1 data cache
+    \item A central snooping bus connecting all caches
+    \item Main memory backing the L1 caches
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[node distance=1.5cm, auto]
+    % Define styles
+    \tikzstyle{core} = [rectangle, rounded corners, minimum width=2cm, minimum height=1cm, text centered, draw=black, fill=blue!10]
+    \tikzstyle{cache} = [rectangle, rounded corners, minimum width=2cm, minimum height=1cm, text centered, draw=black, fill=green!10]
+    \tikzstyle{memory} = [rectangle, rounded corners, minimum width=7cm, minimum height=1cm, text centered, draw=black, fill=yellow!10]
+    \tikzstyle{bus} = [rectangle, rounded corners, minimum width=7cm, minimum height=0.7cm, text centered, draw=black, fill=red!10]
+    \tikzstyle{arrow} = [thick,->,>=stealth]
+    
+    % Place nodes
+    \node (core0) [core] {Core 0};
+    \node (cache0) [cache, below of=core0] {L1 Cache 0};
+    \node (core1) [core, right=2cm of core0] {Core 1};
+    \node (cache1) [cache, below of=core1] {L1 Cache 1};
+    \node (core2) [core, right=2cm of core1] {Core 2};
+    \node (cache2) [cache, below of=core2] {L1 Cache 2};
+    \node (core3) [core, right=2cm of core2] {Core 3};
+    \node (cache3) [cache, below of=core3] {L1 Cache 3};
+    
+    \node (bus) [bus, below=1.5cm of cache1] {Central Snooping Bus};
+    \node (memory) [memory, below=1.2cm of bus] {Main Memory};
+    
+    % Draw edges
+    \draw [arrow] (core0) -- (cache0);
+    \draw [arrow] (core1) -- (cache1);
+    \draw [arrow] (core2) -- (cache2);
+    \draw [arrow] (core3) -- (cache3);
+    
+    \draw [arrow] (cache0) -- (bus);
+    \draw [arrow] (cache1) -- (bus);
+    \draw [arrow] (cache2) -- (bus);
+    \draw [arrow] (cache3) -- (bus);
+    
+    \draw [arrow] (bus) -- (memory);
+    \draw [arrow] (memory) -- (bus);
+\end{tikzpicture}
+\caption{Overall system architecture}
+\label{fig:architecture}
+\end{figure}
+
+\subsection{Assumptions}
+Beyond the specifications provided in the problem statement, the following additional assumptions were made:
+\begin{itemize}
+    \item The bus is blocking and can process only one transaction at a time
+    \item Bus arbitration is performed on a cycle-by-cycle basis
+    \item Cache-to-cache transfers are possible for shared data
+    \item Bus transactions are prioritized based on the core ID (lower ID gets priority)
+    \item Invalidation acknowledgments are implicitly modeled and do not consume additional cycles
+\end{itemize}
+
+\section{Implementation Details}
+
+\subsection{Class Structure}
+The simulator is implemented using an object-oriented approach in C++, with the following main classes:
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[node distance=2cm, auto]
+    \tikzstyle{class} = [
+        rectangle, 
+        rounded corners, 
+        minimum width=5cm, 
+        minimum height=1.5cm, 
+        text centered, 
+        align=center, % <-- add this line
+        draw=black, 
+        fill=blue!5
+    ]
+    \tikzstyle{arrow} = [thick,->,>=stealth]
+    
+    \node (core) [class] {Core\\\small{Manages trace processing and statistics}};
+    \node (cache) [class, right=3cm of core] {Cache\\\small{Implements cache operations and MESI}};
+    \node (bus) [class, below=2cm of cache] {Bus\\\small{Manages coherence transactions}};
+    \node (cacheset) [class, below=2cm of core] {CacheSet\\\small{Manages a set of cache lines}};
+    \node (cacheline) [class, right=3cm of cacheset] {CacheLine\\\small{Represents a single cache line}};
+    
+    \draw [arrow] (core) -- (cache) node[midway, above] {has-a};
+    \draw [arrow] (cache) -- (bus) node[midway, right] {uses};
+    \draw [arrow] (cache) -- (cacheset) node[midway, left] {contains};
+    \draw [arrow] (cacheset) -- (cacheline) node[midway, above] {contains};
+\end{tikzpicture}
+\caption{Class diagram showing relationships between Core, Cache, and associated components}
+\end{figure}
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|p{10cm}|}
+\hline
+\textbf{Component} & \textbf{Description} \\
+\hline
+Core & Manages trace processing and statistics. \\
+\hline
+Cache & Implements cache operations and MESI protocol. \\
+\hline
+Bus & Manages coherence transactions. \\
+\hline
+CacheSet & Manages a set of cache lines. \\
+\hline
+CacheLine & Represents a single cache line. \\
+\hline
+\end{tabular}
+\caption{Class descriptions}
+\label{tab:class_descriptions}
+\end{table}
+
+\subsection{Data Structures}
+\subsubsection{CacheLine}
+Represents a single cache line with the following attributes:
+\begin{itemize}
+    \item \texttt{tag}: 32-bit tag value
+    \item \texttt{state}: MESI state (Modified, Exclusive, Shared, Invalid, or Empty)
+    \item \texttt{lastUsedCycle}: Timestamp for LRU replacement
+\end{itemize}
+
+\subsubsection{CacheSet}
+Represents a set of cache lines with the following attributes:
+\begin{itemize}
+    \item \texttt{lines}: Vector of CacheLine objects
+    \item Methods for finding lines by tag, identifying victims, and updating LRU information
+\end{itemize}
+
+\subsubsection{Cache}
+Represents the L1 cache of a processor core:
+\begin{itemize}
+    \item \texttt{sets}: Vector of CacheSet objects
+    \item Configuration parameters: set index bits (s), associativity (E), block bits (b)
+    \item Methods for handling memory accesses and snooping requests
+\end{itemize}
+
+\subsubsection{Bus}
+Represents the central snooping bus:
+\begin{itemize}
+    \item \texttt{caches}: Vector of pointers to Cache objects
+    \item Statistics counters: invalidations, data traffic, transactions
+    \item Methods for broadcasting coherence messages
+\end{itemize}
+
+\subsubsection{Core}
+Represents a processor core:
+\begin{itemize}
+    \item \texttt{cache}: Pointer to associated Cache object
+    \item Statistics counters: accesses, hits, misses, writebacks, etc.
+    \item Methods for processing memory access traces
+\end{itemize}
+
+\section{Implementation Flow}
+
+\subsection{Cache Access Flow}
+The following algorithm describes the cache access operation:
+
+\begin{algorithm}
+\caption{Cache Access Procedure}
+\begin{algorithmic}[1]
+\Function{Cache::access}{address, operation, cycle, penaltyCycles}
+    \State Extract tag, set index, and block offset from address
+    \State Find the corresponding set
+    \State Search for the tag in the set
+    \If{line is found AND state is not INVALID}
+        \State Update LRU for the accessed line
+        \If{operation is WRITE}
+            \If{state is SHARED}
+                \State Check if bus is busy
+                \If{bus is busy}
+                    \State \Return \{true, true\} \Comment{Retry later}
+                \EndIf
+                \State Broadcast invalidate on bus
+                \State Add bus delay
+            \EndIf
+            \State Set line state to MODIFIED
+        \EndIf
+        \State \Return \{true, false\} \Comment{Cache hit}
+    \EndIf
+    
+    \State Check if bus is busy
+    \If{bus is busy}
+        \State \Return \{false, true\} \Comment{Retry later}
+    \EndIf
+    
+    \State Find victim line for replacement
+    \If{victim line is MODIFIED}
+        \State Writeback to memory (add penalty)
+        \State Broadcast writeback on bus
+        \State Update writeback statistics
+    \EndIf
+    
+    \If{operation is READ}
+        \State Broadcast BusRd on bus
+        \State Set line state based on response (SHARED or EXCLUSIVE)
+        \State Add appropriate memory access penalty
+    \Else
+        \State Broadcast BusRdX on bus
+        \State Set line state to MODIFIED
+        \State Add memory access penalty
+    \EndIf
+    
+    \State \Return \{false, false\} \Comment{Cache miss}
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Cache Snooping Flow}
+The following algorithm describes the cache snooping operation:
+
+\begin{algorithm}
+\caption{Cache Snooping Procedure}
+\begin{algorithmic}[1]
+\Function{Cache::snoop}{address, operation, penaltyCycles}
+    \State Extract tag and set index from address
+    \State Find the corresponding set
+    \State Search for the tag in the set
+    \If{line not found OR state is INVALID}
+        \State \Return false \Comment{No response needed}
+    \EndIf
+    
+    \If{operation is READ (BusRd)}
+        \If{state is MODIFIED}
+            \State Writeback to memory (add penalty)
+            \State Broadcast writeback on bus
+            \State Update writeback statistics
+        \EndIf
+        \State Change state to SHARED
+        \State \Return true
+    \ElsIf{operation is WRITE (BusRdX or Invalidate)}
+        \If{state is MODIFIED}
+            \State Writeback to memory (add penalty)
+            \State Broadcast writeback on bus
+            \State Update writeback statistics
+        \EndIf
+        \State Change state to INVALID
+        \State \Return true
+    \EndIf
+    
+    \State \Return false
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{MESI State Transitions}
+The MESI protocol state transitions are implemented as shown in the following state diagrams:
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{mesi_local.png}
+    \caption{MESI protocol state transitions for locally initiated accesses. The diagram shows read/write hit/miss scenarios and the resulting state transitions. Green boxes represent bus transactions.}
+    \label{fig:mesi_local}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{mesi_remote.png}
+    \caption{MESI protocol state transitions for remotely initiated accesses. Arrows indicate state transitions, with green boxes showing the operations that trigger them. Black circles represent copy-back operations.}
+    \label{fig:mesi_remote}
+\end{figure}
+
+\subsection{Simulation Flow}
+The main simulation loop processes memory references from each core in a cycle-by-cycle manner:
+
+\begin{algorithm}
+\caption{Main Simulation Loop}
+\begin{algorithmic}[1]
+\State Initialize bus and caches
+\State Load trace files for each core
+\State currentCycle = 0
+\State finished = false
+\While{not finished}
+    \State finished = true
+    \For{each core}
+        \If{core has more instructions OR waiting to repeat}
+            \State finished = false
+            \State Process next memory reference
+        \EndIf
+    \EndFor
+    \State currentCycle++
+\EndWhile
+\State Output statistics
+\end{algorithmic}
+\end{algorithm}
+
+\section{Coherence Operations}
+
+\subsection{Bus Transactions}
+The simulator implements the following bus transactions:
+
+\begin{itemize}
+    \item \textbf{BusRd (R)}: Read request, issued when a processor has a read miss
+    \item \textbf{BusRdX (W)}: Read with intent to modify, issued when a processor has a write miss
+    \item \textbf{Invalidate (I)}: Invalidate request, issued when a processor writes to a shared line
+    \item \textbf{Writeback (B)}: Writeback notification, issued when a dirty line is evicted
+\end{itemize}
+
+\subsection{Cache-to-Cache Transfers}
+When a processor issues a BusRd and another processor has the requested data in Modified state, the data is transferred directly from the cache with the data to the requesting cache. This is more efficient than fetching from memory and helps reduce memory traffic.
+
+\subsection{Handling Write Hits to Shared Lines}
+When a processor wants to write to a line in Shared state, it first broadcasts an Invalidate message on the bus to force other caches to invalidate their copies, ensuring exclusive access before modification.
+
+\section{Performance Analysis}
+
+\subsection{Timing Model}
+The simulator uses the following timing model:
+\begin{itemize}
+    \item Cache hit: 1 cycle
+    \item Memory access: 100 cycles
+    \item Cache-to-cache transfer: 2 cycles per word
+    \item Writeback to memory: 100 cycles
+\end{itemize}
+
+The total execution time for each core is the sum of:
+\begin{itemize}
+    \item Hit time (1 cycle per hit)
+    \item Miss penalty (additional cycles for misses)
+    \item Bus contention delay (when the bus is busy)
+\end{itemize}
+
+\subsection{Statistics Collection}
+The simulator collects the following statistics for analysis:
+\begin{itemize}
+    \item Number of reads and writes per core
+    \item Total execution cycles per core
+    \item Idle cycles per core (waiting for memory or bus)
+    \item Cache miss rate per core
+    \item Number of evictions per core
+    \item Number of writebacks per core
+    \item Number of invalidations on the bus
+    \item Total data traffic (in bytes) on the bus
+\end{itemize}
+
+\section{Results and Analysis}
+
+\subsection{Experimental Setup}
+We evaluated the simulator using trace files from two parallel applications running on a quad-core processor. The cache configuration parameters were varied to study their impact on performance.
+
+\subsection{Effect of Cache Size}
+Increasing the cache size generally improves performance by reducing the miss rate. However, the effectiveness depends on the workload characteristics:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{Cache Size (KB)} & \textbf{Miss Rate} & \textbf{Invalidations} & \textbf{Bus Traffic (KB)} & \textbf{Execution Time (cycles)} \\
+\hline
+16 & X\% & Y & Z & W \\
+\hline
+32 & X\% & Y & Z & W \\
+\hline
+64 & X\% & Y & Z & W \\
+\hline
+\end{tabular}
+\caption{Performance metrics for different cache sizes}
+\label{tab:cache_size}
+\end{table}
+
+\subsection{Effect of Associativity}
+Higher associativity reduces conflict misses but may increase hit time in hardware (though not modeled in our simulator):
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{Associativity} & \textbf{Miss Rate} & \textbf{Invalidations} & \textbf{Bus Traffic (KB)} & \textbf{Execution Time (cycles)} \\
+\hline
+1-way & X\% & Y & Z & W \\
+\hline
+2-way & X\% & Y & Z & W \\
+\hline
+4-way & X\% & Y & Z & W \\
+\hline
+8-way & X\% & Y & Z & W \\
+\hline
+\end{tabular}
+\caption{Performance metrics for different associativities}
+\label{tab:associativity}
+\end{table}
+
+\subsection{Effect of Block Size}
+Larger block sizes exploit spatial locality but may increase miss penalty and bus traffic:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{Block Size (bytes)} & \textbf{Miss Rate} & \textbf{Invalidations} & \textbf{Bus Traffic (KB)} & \textbf{Execution Time (cycles)} \\
+\hline
+16 & X\% & Y & Z & W \\
+\hline
+32 & X\% & Y & Z & W \\
+\hline
+64 & X\% & Y & Z & W \\
+\hline
+128 & X\% & Y & Z & W \\
+\hline
+\end{tabular}
+\caption{Performance metrics for different block sizes}
+\label{tab:block_size}
+\end{table}
+
+\subsection{Coherence Traffic Analysis}
+The MESI protocol generates different types of coherence traffic:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Transaction Type} & \textbf{Count} & \textbf{Data Traffic (KB)} & \textbf{\% of Total Traffic} \\
+\hline
+BusRd & X & Y & Z\% \\
+\hline
+BusRdX & X & Y & Z\% \\
+\hline
+Invalidate & X & Y & Z\% \\
+\hline
+Writeback & X & Y & Z\% \\
+\hline
+\end{tabular}
+\caption{Breakdown of coherence traffic}
+\label{tab:coherence_traffic}
+\end{table}
+
+\section{Discussion}
+
+\subsection{Cache Coherence Overhead}
+The cache coherence protocol introduces overhead in terms of additional bus traffic and invalidations. However, it is necessary to maintain data consistency in multiprocessor systems. The MESI protocol efficiently reduces this overhead by distinguishing between exclusive and shared clean states, which allows write operations to exclusive cache lines without generating bus traffic.
+
+\subsection{Performance Optimizations}
+Several optimizations could improve the performance of the simulated system:
+
+\begin{itemize}
+    \item \textbf{Directory-based coherence}: For larger systems, a directory-based protocol might be more scalable than snooping.
+    \item \textbf{Non-blocking caches}: Allowing the cache to handle multiple outstanding misses could improve performance.
+    \item \textbf{Speculative execution}: Allowing the processor to continue execution past cache misses could hide memory latency.
+    \item \textbf{Prefetching}: Fetching data before it is requested could reduce miss rates.
+\end{itemize}
+
+\subsection{Limitations of the Simulator}
+The current simulator has some limitations:
+
+\begin{itemize}
+    \item No modeling of instruction cache effects
+    \item No modeling of out-of-order execution or other advanced processor features
+    \item Simplified bus arbitration model
+    \item No consideration of DRAM timing parameters
+\end{itemize}
+
+\section{Conclusion}
+We have implemented a detailed simulator for L1 caches in a quad-core processor system with MESI cache coherence protocol. The simulator accurately models cache operations, coherence transactions, and collects various performance metrics. The results highlight the importance of proper cache configuration and the impact of coherence protocol on system performance.
+
+The simulator can be used to study the behavior of different applications on multi-core systems and to explore the design space of cache parameters for optimal performance. Future work could extend the simulator to include more advanced features such as non-blocking caches, prefetching, and directory-based coherence protocols.
+
+\section{References}
+\begin{enumerate}
+    \item Hennessy, J. L., \& Patterson, D. A. (2011). Computer architecture: a quantitative approach. Elsevier.
+    \item Sorin, D. J., Hill, M. D., \& Wood, D. A. (2011). A primer on memory consistency and cache coherence. Synthesis Lectures on Computer Architecture, 6(3), 1-212.
+    \item Culler, D. E., Singh, J. P., \& Gupta, A. (1999). Parallel computer architecture: a hardware/software approach. Gulf Professional Publishing.
+\end{enumerate}
+
+\appendix
+\section{Code Listing}
+The simulator is implemented using the following main classes:
+
+\subsection{CacheLine.hpp}
+\begin{lstlisting}[language=C++]
+#pragma once
+#include <cstdint>
+#include <vector>
+
+enum MESIState { MODIFIED, EXCLUSIVE, SHARED, INVALID, EMPTY };
+
+struct CacheLine {
+    uint32_t tag;
+    MESIState state;
+    int lastUsedCycle;
+};
+\end{lstlisting}
+
+\subsection{CacheSet.hpp}
+\begin{lstlisting}[language=C++]
+#pragma once
+#include "CacheLine.hpp"
+#include <vector>
+
+class CacheSet {
+public:
+    std::vector<CacheLine> lines;
+
+    CacheSet(int associativity);
+    int findLine(uint32_t tag);
+    int findVictim();
+    void updateLRU(int lineIndex, int currentCycle);
+};
+\end{lstlisting}
+
+\subsection{Cache.hpp}
+\begin{lstlisting}[language=C++]
+#pragma once
+#include "CacheSet.hpp"
+#include <vector>
+
+class Bus;
+class Core;
+
+class Cache {
+private:
+    int s, E, b;
+    int numSets;
+    std::vector<CacheSet> sets;
+    Bus *bus; // Pointer to Bus
+    int coreId;
+    
+public:
+    Core* core; // Pointer to Core
+    Cache(int s, int E, int b, int coreId, Bus *bus);
+    void add_core(Core* core);
+    std::pair<bool, bool> access(uint32_t address, char op, int cycle, int &penaltyCycles);
+    bool snoop(uint32_t address, char op, int &penaltyCycles);
+    int getBlockBits() const { return b; }
+};
+\end{lstlisting}
+
+\subsection{Bus.hpp}
+\begin{lstlisting}[language=C++]
+#pragma once
+#include <vector>
+#include <cstdint>
+
+class Cache;
+
+class Bus {
+public:
+    std::vector<Cache *> caches;
+    int invalidations;
+    int dataTrafficBytes;
+    int transactions;
+    bool broadcast(uint32_t address, char op, int sourceId);
+    void registerCache(Cache *cache);
+    int bus_cycles = -1;
+    Bus();
+};
+\end{lstlisting}
+
+\subsection{Core.hpp}
+\begin{lstlisting}[language=C++]
+#pragma once
+#include <fstream>
+#include <sstream>
+#include <string>
+
+class Bus;
+class Cache;
+
+using namespace std;
+
+class Core {
+public:
+    ifstream infile;
+    int id;
+    Cache* cache;
+    int totalAccesses;
+    int readCount, writeCount;
+    int cacheMisses;
+    int evictions;
+    int writebacks;
+    int totalCycles;
+    int idleCycles;
+    int execCycle;
+    int invalidations;
+    int dataTraffic;
+
+    bool repeat = false;
+    char repeat_op;
+    uint32_t repeat_address;
+
+    Core(int id, Cache* cache);
+    void recordTrace(const std::string& filename);
+    void processTrace(int currentCycle);
+};
+\end{lstlisting}
+
+\end{document}

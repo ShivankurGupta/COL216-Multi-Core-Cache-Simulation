@@ -1,0 +1,68 @@
+Simulation Parameters:
+Trace Prefix: ./traces/narw
+Set Index Bits: 4
+Associativity: 1
+Block Bits: 5
+Block Size (Bytes): 32
+Number of Sets: 16
+Cache Size (KB per core): 0.5
+MESI Protocol: Enabled
+Write Policy: Write-back, Write-allocate
+Replacement Policy: LRU
+Bus: Central snooping bus
+
+Core 0 Statistics:
+Total Instructions: 2
+Total Reads: 1
+Total Writes: 1
+Total Execution Cycles: 102
+Idle Cycles: 0
+Cache Misses: 1
+Cache Miss Rate: 50%
+Cache Evictions: 0
+Writebacks: 1
+Bus Invalidations: 0
+Data Traffic (Bytes): 64
+
+Core 1 Statistics:
+Total Instructions: 1
+Total Reads: 1
+Total Writes: 0
+Total Execution Cycles: 17
+Idle Cycles: 101
+Cache Misses: 1
+Cache Miss Rate: 100%
+Cache Evictions: 0
+Writebacks: 0
+Bus Invalidations: 0
+Data Traffic (Bytes): 32
+
+Core 2 Statistics:
+Total Instructions: 0
+Total Reads: 0
+Total Writes: 0
+Total Execution Cycles: 0
+Idle Cycles: 0
+Cache Misses: 0
+Cache Miss Rate: 0%
+Cache Evictions: 0
+Writebacks: 0
+Bus Invalidations: 0
+Data Traffic (Bytes): 0
+
+Core 3 Statistics:
+Total Instructions: 0
+Total Reads: 0
+Total Writes: 0
+Total Execution Cycles: 0
+Idle Cycles: 0
+Cache Misses: 0
+Cache Miss Rate: 0%
+Cache Evictions: 0
+Writebacks: 0
+Bus Invalidations: 0
+Data Traffic (Bytes): 0
+
+Overall Bus Summary:
+Total Bus Transactions: 3
+Total Bus Traffic (Bytes): 96
