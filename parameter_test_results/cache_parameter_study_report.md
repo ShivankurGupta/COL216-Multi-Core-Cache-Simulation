@@ -4,20 +4,20 @@
 This report analyzes the impact of different cache parameters on execution time.
 
 ## Parameters Tested
-- Set Index Bits (s): [3, 4, 5] (corresponding to [8, 16, 32] sets)
+- Set Index Bits (s): [5, 6, 7] (corresponding to [32, 64, 128] sets)
 - Associativity (E): [1, 2, 4]
 - Block Size Bits (b): [4, 5, 6] (corresponding to [16, 32, 64] bytes)
 
 ## Summary of Results
 ```
        Test  Sets (2^s)  Associativity (E)  Block Size (bytes)  Cache Size (KB)  Max Execution Time  Core 0 Execution Time  Core 1 Execution Time  Core 2 Execution Time  Core 3 Execution Time
-0  s3_E1_b5           8                  1                  32             0.25                 102                    102                     18                     18                    101
-1  s4_E1_b5          16                  1                  32             0.50                 102                    102                     18                     18                    101
-2  s5_E1_b5          32                  1                  32             1.00                 102                    102                     18                     18                    101
-3  s4_E2_b5          16                  2                  32             1.00                 102                    102                     18                     18                    101
-4  s4_E4_b5          16                  4                  32             2.00                 102                    102                     18                     18                    101
-5  s4_E1_b4          16                  1                  16             0.25                 210                    102                     10                    210                    101
-6  s4_E1_b6          16                  1                  64             1.00                 102                    102                     34                     34                    101
+0  s5_E2_b5          32                  2                  32              2.0            13166569               12581417               12214456               13166569               12289499
+1  s6_E2_b5          64                  2                  32              4.0             7179569                6382305                6269780                7179569                6377307
+2  s7_E2_b5         128                  2                  32              8.0             5607101                4869265                4777972                5607101                4826071
+3  s6_E1_b5          64                  1                  32              2.0            46656317               46350329               45999908               46656317               46109163
+4  s6_E4_b5          64                  4                  32              8.0             5531229                4833301                4719408                5531229                4783579
+5  s6_E2_b4          64                  2                  16              2.0            15008389               13937393               13502404               15008389               13215007
+6  s6_E2_b6          64                  2                  64              8.0             6227913                5897321                5733848                6227913                5701987
 ```
 
 ## Observations

@@ -97,6 +97,66 @@ def plot_parameter_impact(parameter_name, x_values, y_values, x_label, y_label):
     plt.close()
     return plot_file
 
+def plot_consolidated_cache_size_impact(all_results):
+    """Create a consolidated plot showing impact of cache size across all parameter variations"""
+    plt.figure(figsize=(12, 8))
+    
+    # Prepare data for plotting
+    s_varying_data = []
+    e_varying_data = []
+    b_varying_data = []
+    
+    for test_name, results in all_results.items():
+        match = re.match(r's(\d+)_E(\d+)_b(\d+)', test_name)
+        if match:
+            s, E, b = map(int, match.groups())
+            cache_size_kb = (2**s * E * 2**b) / 1024
+            max_time = results['max']
+            
+            # Determine which parameter is being varied
+            if s != DEFAULT_S and E == DEFAULT_E and b == DEFAULT_B:
+                s_varying_data.append((cache_size_kb, max_time, s))
+            elif s == DEFAULT_S and E != DEFAULT_E and b == DEFAULT_B:
+                e_varying_data.append((cache_size_kb, max_time, E))
+            elif s == DEFAULT_S and E == DEFAULT_E and b != DEFAULT_B:
+                b_varying_data.append((cache_size_kb, max_time, b))
+    
+    # Sort data by cache size
+    s_varying_data.sort(key=lambda x: x[0])
+    e_varying_data.sort(key=lambda x: x[0])
+    b_varying_data.sort(key=lambda x: x[0])
+    
+    # Plot with different markers for each parameter type
+    if s_varying_data:
+        x_vals, y_vals, labels = zip(*s_varying_data)
+        plt.plot(x_vals, y_vals, 'o-', linewidth=2, markersize=8, label=f"Varying Sets (s)")
+        for i, label in enumerate(labels):
+            plt.annotate(f"s={label}", (x_vals[i], y_vals[i]), textcoords="offset points", xytext=(0,10), ha='center')
+    
+    if e_varying_data:
+        x_vals, y_vals, labels = zip(*e_varying_data)
+        plt.plot(x_vals, y_vals, 's-', linewidth=2, markersize=8, label=f"Varying Associativity (E)")
+        for i, label in enumerate(labels):
+            plt.annotate(f"E={label}", (x_vals[i], y_vals[i]), textcoords="offset points", xytext=(0,10), ha='center')
+    
+    if b_varying_data:
+        x_vals, y_vals, labels = zip(*b_varying_data)
+        plt.plot(x_vals, y_vals, '^-', linewidth=2, markersize=8, label=f"Varying Block Size (b)")
+        for i, label in enumerate(labels):
+            plt.annotate(f"b={label}", (x_vals[i], y_vals[i]), textcoords="offset points", xytext=(0,10), ha='center')
+    
+    plt.grid(True)
+    plt.title("Impact of Cache Size on Maximum Execution Time (All Parameters)")
+    plt.xlabel("Cache Size (KB)")
+    plt.ylabel("Max Execution Time (cycles)")
+    plt.legend()
+    
+    # Save the plot
+    plot_file = os.path.join(PLOTS_DIR, "consolidated_cache_size_impact.png")
+    plt.savefig(plot_file)
+    plt.close()
+    return plot_file
+
 def main():
     print(f"Running parameter study with defaults: s={DEFAULT_S}, E={DEFAULT_E}, b={DEFAULT_B}")
     print(f"Trace prefix: {TRACE_PREFIX}")
@@ -155,6 +215,10 @@ def main():
         b_values, max_times = zip(*b_results)
         block_sizes = [2**b for b in b_values]
         plot_parameter_impact("Block Size", block_sizes, max_times, "Block Size (bytes)", "Max Execution Time (cycles)")
+    
+    # Add consolidated cache size plot
+    if all_results:
+        plot_consolidated_cache_size_impact(all_results)
     
     # Create a summary table
     summary_data = []
