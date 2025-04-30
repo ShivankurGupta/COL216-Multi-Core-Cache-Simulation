@@ -6,7 +6,7 @@
 #include <fstream>
 
 // Global debug flag
-bool DEBUG_MODE = true;
+bool DEBUG_MODE = false;
 
 int main(int argc, char *argv[])
 {
